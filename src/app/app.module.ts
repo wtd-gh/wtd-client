@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { PrimeModule } from './primemodule';
+import { MatModule } from './matmodule';
 
 
 // Components
@@ -27,7 +27,7 @@ import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.compon
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    PrimeModule
+    MatModule
   ],
   providers: [],
   bootstrap: [AppComponent]

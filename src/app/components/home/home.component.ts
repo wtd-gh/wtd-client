@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   handleTabChange(e) {
-    this.activeI = e.index;
+    this.activeI = e;
   }
   openSignUpTab() {
     this.activeI = 1;

@@ -1,6 +1,6 @@
 <div class="nav-wrapper">
-  <div class="nav-bar ui-g">
-    <div class="left ui-g-12">
+  <div class="nav-bar" [fxLayout]="'row'">
+    <div class="left" [fxFlex]="100">
       <span class="m-0 ml-sm-5"></span>
       <img class="nav-logo" src="assets/logo.png" alt="">
       <span class="nav-title">What to Do?!</span>
@@ -22,28 +22,29 @@
 </div>
 
 <div class="mh-v100 bg-grey pt-5">
-  <div class="ui-g">
-    <div class="ui-g-12 ui-md-6 ui-lg-4 pt-5 pl-3">
+  <div [fxLayout]="'row'">
+    <div [fxFlex]="40">
       <div class="ml-5 float-right">
-        <p-tabView [activeIndex]="activeI" (onChange)="handleTabChange($event)">
-          <p-tabPanel header="Log In">
+        <mat-tab-group [selectedIndex]="activeI" (selectedIndexChange)="handleTabChange($event)" style="width: 450px;">
+          <mat-tab [label]="'Log in'">
             <h2 class="mb-0">Log in</h2>
-            <p class="mb-2">Don't have an account? <a (click)="openSignUpTab()" class="h-pointer h-ul">Create one
+            <p class="mb-2">Don't have an account? <a (click)="openSignUpTab()" class="h-pointer h-ul primary">Create one
                 now</a></p>
             <app-signin></app-signin>
             <p class="text-right"><a href="reset" class="h-ul">Forgot Password?</a></p>
-          </p-tabPanel>
-          <p-tabPanel header="Create Account" style="min-width: 100px;">
+          </mat-tab>
+          <mat-tab [label]="'Create account'">
             <h2>Create Account</h2>
             <app-signup></app-signup>
-            <p class="font-12 py-3 px-1">By clicking "Sign Up", you agree to our <a href="tp/terms_and_services">Terms of Services</a> and
+            <p class="font-12 py-3 px-1">By clicking "Sign Up", you agree to our <a href="tp/terms_and_services">Terms
+                of Services</a> and
               <a href="tp/privacy_policy">Privacy
                 Policy</a>.</p>
-          </p-tabPanel>
-        </p-tabView>
+          </mat-tab>
+        </mat-tab-group>
       </div>
     </div>
-    <div class="ui-g-12 ui-md-6 ui-lg-8 text-center text-md-left px-5">
+    <div [fxFlex]="60" class="text-center text-md-left px-5">
       <img src="assets/papers.png" alt="" style="max-height: 350px">
       <h1 class="title">Not an ordinary To Do app!</h1>
       <p class="pr-5">Just add your tasks and manage all your work. sdsds afns vdklj dblndf bklsdsds afns vdklj dblndf

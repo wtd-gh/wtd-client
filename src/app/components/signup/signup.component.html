@@ -1,29 +1,38 @@
-<div class="ui-g">
-  <div class="ui-g-12">
-    <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
-      <input class="w-100" type="text" pInputText placeholder="Full Name">
-    </div>
+<div [fxLayout]="'column'">
+  <div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Full Name</mat-label>
+      <input class="w-100" matInput placeholder="Full Name">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
   </div>
-  <div class="ui-g-12">
-    <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
-      <input class="w-100" type="text" pInputText placeholder="Username">
-    </div>
+
+  <div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Username</mat-label>
+      <input class="w-100" matInput placeholder="Username">
+      <mat-icon matSuffix>person_add</mat-icon>
+    </mat-form-field>
   </div>
-  <div class="ui-g-12">
-    <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon"><i class="pi pi-envelope"></i></span>
-      <input class="w-100" type="text" pInputText placeholder="Email">
-    </div>
+
+  <div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Email</mat-label>
+      <input class="w-100" matInput placeholder="Email">
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
   </div>
-  <div class="ui-g-12">
-    <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon"><i class="pi pi-key"></i></span>
-      <input class="w-100" type="Password" pPassword placeholder="Password">
-    </div>
+  <div>
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Password</mat-label>
+      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
   </div>
-  <div class="ui-g-12 pl-0 pr-2">
-    <button class="w-100 ui-button-raised" pButton type="button" label="Sign Up" style="margin: .25em"></button>
+  <div class="pl-0 pr-2">
+    <button class="w-100" mat-flat-button color="primary">Create Account</button>
   </div>
 </div>

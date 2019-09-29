@@ -9,7 +9,7 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
 import { WhatTodoComponent } from './what-todo/what-todo.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { PrimeModule } from '../primemodule';
+import { MatModule } from '../matmodule';
 
 
 
@@ -18,7 +18,7 @@ import { PrimeModule } from '../primemodule';
   imports: [
     CommonModule,
     WtdRoutingModule,
-    PrimeModule,
+    MatModule,
     FormsModule
   ],
   exports: [

@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&display=swap');
+
 
 body {
   margin: 0;
@@ -21,6 +23,10 @@ body {
 .bg-lblue {
   background: #4285f4;
   color: #eee;
+}
+
+.primary {
+  color: #4285f4;
 }
 
 .bg-grey {
@@ -126,23 +132,18 @@ hr {
 .font-30 {font-size: 30px;}
 .font-40 {font-size: 40px;}
 
-body .ui-tabview.ui-tabview-top .ui-tabview-nav li {
-  margin: 0px;
+
+
+/* -------------------------------------------------------------------------------- */
+/* Material Overrrides */
+/* -------------------------------------------------------------------------------- */
+
+
+/* Home login Create Ac tab */
+.mat-tab-label {
   width: 50%;
 }
 
-body .ui-sidebar {
-  padding: 0;
-  border: 1px solid #c8c8c8;
-  background-color: rgb(230, 230, 230);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-body .ui-sidebar-right {
-  width: 18em;
-}
-
-body .ui-sidebar .ui-sidebar-close {
-  color: #848484;
-  margin: 5px 10px;
+.mat-tab-labels .mat-ink-bar {
+  width: 50%;
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectItem } from 'primeng/components/common/selectitem';
 
 @Component({
   selector: 'app-add-todo',
@@ -17,7 +16,7 @@ export class AddTodoComponent implements OnInit {
 
   tIsRepeat = false;
   tDayRepeat: number[] = [1, 2, 3, 4, 5];
-  tDayTypes: SelectItem[] = [
+  tDayTypes: any[] = [
     { label: 'S', value: 0 },
     { label: 'M', value: 1 },
     { label: 'T', value: 2 },
