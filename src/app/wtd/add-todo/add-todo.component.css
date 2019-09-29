@@ -1,0 +1,9 @@
+.add-todo h3{
+  font-weight: 600;
+}
+
+.repeat-task {
+  position: relative;
+  top: -7px;
+  left: 5px;
+}

@@ -1,0 +1,34 @@
+<ul class="sidenav">
+  <li>
+    <a [routerLink]="['/wtd']">
+      <div class="item">
+        <i class="pi pi-question-circle"></i>
+        <span class="item-text">What to Do?</span>
+      </div>
+    </a>
+  </li>
+
+  <li>
+    <a [routerLink]="['/wtd/add_to_do']">
+      <div class="item"><i class="pi pi-plus-circle"></i><span class="item-text">Add to Do!</span></div>
+    </a>
+  </li>
+
+  <li>
+    <a [routerLink]="['/wtd/did_it']">
+      <div class="item"><i class="pi pi-check-circle"></i><span class="item-text">Did it!</span></div>
+    </a>
+  </li>
+  <li>
+    <a [routerLink]="['/wtd/zoom_out']">
+      <div class="item"><i class="pi pi-search-plus"></i><span class="item-text">Zoom Out</span></div>
+    </a>
+  </li>
+
+  <li>
+    <a (click)="logout()" class="hidden-lg-up">
+      <div class="item"><i class="pi pi-sign-out"></i><span class="item-text">Log out</span></div>
+    </a>
+  </li>
+
+</ul>

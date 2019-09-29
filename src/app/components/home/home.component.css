@@ -1,0 +1,66 @@
+.title {
+  font-size: 50px;
+  margin: 2px;
+}
+
+.nav-bar {
+  background-color: rgb(230, 230, 230);
+  height: 50px;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  z-index: 2;
+  left: 0px;
+  border-bottom: rgb(230, 230, 230, 0.2) 1px solid;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nav-below {
+  height: 50px;
+  width: 100vw;
+}
+
+.nav-bar .left {
+  text-align: left;
+  height: 100%;
+}
+
+.nav-bar .right {
+  text-align: right;
+  height: 100%;
+  vertical-align: middle;
+  position: relative;
+}
+
+.nav-button {
+  margin: 0px 5px;
+  text-align: center;
+  position: relative;
+  vertical-align: middle;
+  padding: 7px 15px;
+  color: #222;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.nav-button .text {
+  display: block;
+}
+
+.nav-button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.nav-logo {
+  width: 35px;
+}
+
+.nav-title {
+  font-size: 25px;
+  position: relative;
+  top: -11px;
+  left: 8px;
+  font-weight: 600;
+}

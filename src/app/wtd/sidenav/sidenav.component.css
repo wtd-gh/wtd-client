@@ -1,0 +1,31 @@
+.sidenav {
+  list-style: none;
+  width: 100%;
+  padding: 10px 0px;
+  margin: 0;
+}
+
+.sidenav li {
+  padding: 0;
+}
+
+.sidenav li .item {
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+  padding: 10px 15px;
+  color: #222;
+}
+
+.sidenav li .item .item-text {
+  position: relative;
+  top: -5px;
+}
+
+.sidenav li .item i{
+  font-size: 25px;
+}
+
+.sidenav li .item:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
