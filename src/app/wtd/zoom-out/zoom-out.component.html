@@ -1,31 +1,29 @@
 <app-navbar>
   <div class="p-3">
     <h1>Here are the tasks you can embark your skills upon, {{name}}:-</h1>
+    <mat-form-field class="m-2" style="width: 450px; max-width: 90%">
+      <input type="tel" matInput placeholder="Search">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
     <div class="mr-md-5">
-      <div class="p-grid p-justify-left mr-md-5 mr-0 p-1 ">
-        <div class="p-col-12 p-md-6 p-lg-4 p-1">
-            <p-card header="Simple Card" >
-                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
-            </p-card>
+      <div [fxLayout]="'row wrap'" class="tasks-wrapper mr-md-4">
+        <div class="p-2">
+          <app-todo></app-todo>
         </div>
-        <div class="p-col-12 p-md-6 p-lg-4 p-1">
-            <p-card header="Simple Card">
-                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
-            </p-card>
+        <div class="p-2">
+          <app-todo></app-todo>
         </div>
-        <div class="p-col-12 p-md-6 p-lg-4 p-1">
-            <p-card header="Simple Card" >
-                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
-            </p-card>
+        <div class="p-2">
+          <app-todo></app-todo>
         </div>
-        <div class="p-col-12 p-md-6 p-lg-4 p-1">
-            <p-card header="Simple Card" >
-                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
-            </p-card>
+        <div class="p-2">
+          <app-todo></app-todo>
+        </div>
+        <div class="p-2">
+          <app-todo></app-todo>
+        </div>
+        <div class="p-2">
+          <app-todo></app-todo>
         </div>
       </div>
     </div>

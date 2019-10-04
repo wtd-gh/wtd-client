@@ -1,44 +1,75 @@
-<div class="nav-wrapper">
-  <div class="nav-bar ui-g">
-    <div class="left ui-g-7 ui-sm-7">
-      <span class="m-0 ml-sm-5"></span>
-      <img class="nav-logo" src="assets/logo.png" alt="">
-      <span class="nav-title">What to Do?!</span>
+<div class="navbar-wrapper">
+  <mat-toolbar class="nav-bar px-sm-4 px-1 bg-primary color-w">
+    <img class="nav-logo" src="assets/logo.png" alt="">
+    <h1 class="nav-title">What to Do?!</h1>
+
+    <span class="spacer"></span>
+
+    <button mat-button *ngIf="!mobileQuery.matches" (click)="logout()">
+      <mat-icon [inline]="true">exit_to_app</mat-icon>
+      Log out
+    </button>
+
+    <button mat-icon-button *ngIf="mobileQuery.matches" (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container mh-nav100">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [position]="mobileQuery.matches ? 'end' : 'start'"
+      [opened]="mobileQuery.matches ? false : true" fixedInViewport=true fixedTopGap="50" class="sidenav">
+      <div class="h-100" [fxLayout]="'column'">
+      <h3 class="py-3 m-0 text-center bg-primary color-w">Welcome {{uName}} </h3>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/wtd']" class=" snav-l-i-active">
+          <div class="snav-l-i">
+            <mat-icon [inline]="true">help</mat-icon>
+            What to Do?!
+          </div>
+        </a>
+
+        <a mat-list-item [routerLink]="['/wtd/add_to_do']">
+          <div class="snav-l-i">
+            <mat-icon [inline]="true">add_circle</mat-icon>
+            Add to Do
+          </div>
+        </a>
+
+        <a mat-list-item [routerLink]="['/wtd/did_it']">
+          <div class="snav-l-i">
+            <mat-icon [inline]="true">check_circle</mat-icon>
+            Did it
+          </div>
+        </a>
+
+        <a mat-list-item [routerLink]="['/wtd/zoom_out']">
+          <div class="snav-l-i">
+            <mat-icon [inline]="true">zoom_out</mat-icon>
+            Zoom Out
+          </div>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a mat-list-item *ngIf="mobileQuery.matches" (click)="logout()">
+          <div class="snav-l-i">
+            <mat-icon [inline]="true">exit_to_app</mat-icon>
+            Log out
+          </div>
+        </a>
+      </mat-nav-list>
+      <div class="spacer"></div>
+      <div class="text-center snav-footer">
+        <div><a href="s" class="mx-2">Terms </a><a href="s" class="mx-2"> Privacy</a></div>
+        <p class="mt-1">© 2019 WtD</p>
+      </div>
     </div>
-    <div class="right ui-g-5 ui-sm-5">
-      <a (click)="logout()" class="nav-button h-pointer hidden-md-down">
-        <span class="text"><i class="pi pi-sign-out"></i><span class="logout-text">Log out</span></span>
-      </a>
-      <a (click)="toggleSideNav()" class="nav-button h-pointer hidden-lg-up">
-        <span class="text"><i class="pi pi-bars "></i></span>
-      </a>
-      <span class="m-0 mr-sm-5"></span>
-    </div>
-  </div>
-  <div class="nav-below"></div>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="mh-nav100">
+      <div class="mh-nav100">
+        <ng-content></ng-content>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
-
-<div class="side-nav-wrapper hidden-md-down">
-  <div class="side-nav">
-    <h3 class="text-center">Welcome {{name}}! </h3>
-    <hr>
-    <app-sidenav></app-sidenav>
-  </div>
-</div>
-
-<div class="main-content-wrapper">
-  <div class="side-nav-below hidden-md-down">
-  </div>
-  <div class="main-content mh-v100 bg-grey w-md-down-100">
-    <div class="main-content-inside w-md-down-100">
-      <ng-content></ng-content>
-    </div>
-  </div>
-</div>
-
-
-<p-sidebar [(visible)]="sideNav" [baseZIndex]="10000" position="right" class="ui-sidebar-md">
-    <h3 class="text-center">Welcome {{name}}! </h3>
-    <hr>
-    <app-sidenav></app-sidenav>
-</p-sidebar>

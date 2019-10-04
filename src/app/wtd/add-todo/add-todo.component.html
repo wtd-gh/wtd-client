@@ -1,34 +1,60 @@
 <app-navbar>
   <div class="py-3 px-5">
     <h1>Got another thrilling task {{name}}? Add it and <b>Just do it</b></h1>
-    <div class="add-todo">
-      <h3 class="mb-0">Task Name</h3>
-      <input id="input" type="text" size="50" pInputText [(ngModel)]="tName">
+    <div [fxLayout]="'column'" class="add-todo">
+      <mat-form-field appearance="outline">
+        <mat-label>Task Name</mat-label>
+        <input matInput placeholder="Task Name">
+        <!-- <mat-icon matSuffix></mat-icon> -->
+      </mat-form-field>
 
-      <h3 class="mb-0">Description</h3>
-      <textarea pInputTextarea [(ngModel)]="tDesc"></textarea>
+      <mat-form-field appearance="outline">
+        <mat-label>Task Description</mat-label>
+        <textarea matInput placeholder="Task Description"></textarea>
+      </mat-form-field>
 
-      <h3 class="mb-0">Deadline</h3>
+      <mat-form-field appearance="outline">
+        <mat-label>Hours for Completion</mat-label>
+        <input type="number" matInput placeholder="Hours">
+        <!-- <mat-icon matSuffix></mat-icon> -->
+      </mat-form-field>
 
-      <p-calendar class="hidden-md-down" [(ngModel)]="tDeadline" [showTime]="true" [showIcon]="true" [hourFormat]="12" [hideOnDateTimeSelect]="true">
-      </p-calendar>
-      <p-calendar class="hidden-lg-up" [(ngModel)]="tDeadline" [touchUI]="true" [showTime]="true" [showIcon]="true" [hourFormat]="12" [hideOnDateTimeSelect]="true">
-      </p-calendar>
+      <mat-form-field appearance="outline">
+        <mat-label>Minimum Time Quanta</mat-label>
+        <input type="number" matInput placeholder="Time Quanta">
+        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+      </mat-form-field>
 
-      <h3 class="mb-0">Hours for Completion:</h3>
-      <p-spinner size="30" [min]="0" [(ngModel)]="tCompHrs"></p-spinner>
+      <h3 class="m-0 mb-2">
+        <mat-slide-toggle color="primary" [(ngModel)]="tIsRepeat">Repeat Task</mat-slide-toggle>
+      </h3>
 
-      <h3 class="mb-0">Minimum Time Quanta:</h3>
-      <p-spinner size="30" [min]="0" [placeholder]="'Hours'" [(ngModel)]="tQuanta"></p-spinner>
+      <mat-form-field *ngIf="!tIsRepeat" appearance="outline">
+        <input matInput [matDatepicker]="picker" placeholder="Deadline">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-      <h3 class="mb-1"><p-inputSwitch [(ngModel)]="tIsRepeat"></p-inputSwitch><span class="repeat-task">Repeat Task</span></h3>
-
-      <div *ngIf="tIsRepeat">
+      <div *ngIf="tIsRepeat" [fxLayout]="'column'">
         <p class="mb-1">Select days to repeat</p>
-        <p-selectButton [options]="tDayTypes" [(ngModel)]="tDayRepeat" multiple="multiple"></p-selectButton>
+        <mat-button-toggle-group [multiple]="true" color="primary" class="mb-2">
+          <mat-button-toggle value="0">S</mat-button-toggle>
+          <mat-button-toggle value="1">M</mat-button-toggle>
+          <mat-button-toggle value="2">T</mat-button-toggle>
+          <mat-button-toggle value="3">W</mat-button-toggle>
+          <mat-button-toggle value="4">T</mat-button-toggle>
+          <mat-button-toggle value="5">F</mat-button-toggle>
+          <mat-button-toggle value="6">S</mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="picker" placeholder="Repeat time">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
       </div>
       <br>
-      <button pButton type="button" label="Add it!" class="ui-button-raised ui-button-primery"></button>
+      <button mat-raised-button color="primary">Add it!</button>
     </div>
   </div>
 </app-navbar>

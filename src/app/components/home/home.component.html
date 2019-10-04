@@ -25,18 +25,18 @@
   <div [fxLayout]="'row'">
     <div [fxFlex]="40">
       <div class="ml-5 float-right">
-        <mat-tab-group [selectedIndex]="activeI" (selectedIndexChange)="handleTabChange($event)" style="width: 450px;">
+        <mat-tab-group class="main-auth-tab" [selectedIndex]="activeI" (selectedIndexChange)="handleTabChange($event)" style="width: 450px;">
           <mat-tab [label]="'Log in'">
             <h2 class="mb-0">Log in</h2>
-            <p class="mb-2">Don't have an account? <a (click)="openSignUpTab()" class="h-pointer h-ul primary">Create one
-                now</a></p>
             <app-signin></app-signin>
+            <p class="mb-2">Don't have an account? <a (click)="openSignUpTab()" class="h-pointer h-ul primary">Create one
+              now</a></p>
             <p class="text-right"><a href="reset" class="h-ul">Forgot Password?</a></p>
           </mat-tab>
           <mat-tab [label]="'Create account'">
             <h2>Create Account</h2>
             <app-signup></app-signup>
-            <p class="font-12 py-3 px-1">By clicking "Sign Up", you agree to our <a href="tp/terms_and_services">Terms
+            <p class="font-12 py-3 px-1">By clicking "Sign Up", you agree to our <a href="tp/terms_of_services">Terms
                 of Services</a> and
               <a href="tp/privacy_policy">Privacy
                 Policy</a>.</p>

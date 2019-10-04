@@ -24,8 +24,9 @@
               "src/assets"
             ],
             "styles": [
+              "src/wtdtheme.scss",
               "src/b4util.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -121,6 +122,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "wtd-client"
+    }
+  },
+  "defaultProject": "wtd-client",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

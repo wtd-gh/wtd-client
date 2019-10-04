@@ -8,18 +8,20 @@ import { DidItComponent } from './did-it/did-it.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { WhatTodoComponent } from './what-todo/what-todo.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatModule } from '../matmodule';
+import { TodoComponent } from './todo/todo.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
 @NgModule({
-  declarations: [ZoomOutComponent, DidItComponent, AddTodoComponent, WhatTodoComponent, NavbarComponent, SidenavComponent],
+  declarations: [ZoomOutComponent, DidItComponent, AddTodoComponent, WhatTodoComponent, NavbarComponent, TodoComponent],
   imports: [
     CommonModule,
     WtdRoutingModule,
     MatModule,
-    FormsModule
+    FormsModule,
+    MatNativeDateModule
   ],
   exports: [
     WtdRoutingModule

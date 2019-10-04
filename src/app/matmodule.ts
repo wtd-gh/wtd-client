@@ -12,6 +12,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 const importsExports = [
   MatButtonModule,
@@ -25,11 +33,19 @@ const importsExports = [
   MatDatepickerModule,
   MatSlideToggleModule,
   MatTabsModule,
-  FlexLayoutModule
+  FlexLayoutModule,
+  MatToolbarModule,
+  MatListModule,
+  MatChipsModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatDividerModule,
+  MatCardModule,
+  MatButtonToggleModule
 ];
 
 @NgModule({
   imports: importsExports,
   exports: importsExports
 })
-export class MatModule {}
+export class MatModule { }
