@@ -2,18 +2,24 @@
   <div>
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Username/Email</mat-label>
-      <input class="w-100" matInput placeholder="Username/Email">
+      <input class="w-100" matInput placeholder="Username/Email" [formControl]="uNameFC">
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
   </div>
   <div>
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Password</mat-label>
-        <input class="w-100" matInput type="Password" placeholder="Password">
-        <mat-icon matSuffix>vpn_key</mat-icon>
-      </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Password</mat-label>
+      <input class="w-100" matInput type="Password" placeholder="Password" [formControl]="passFC">
+      <mat-icon matSuffix>vpn_key</mat-icon>
+      <!-- <mat-error *ngIf="isPassError">
+        The password you entered is incorrect, Please try again!
+      </mat-error> -->
+    </mat-form-field>
   </div>
-  <div class="pl-0 pr-2">
-    <button class="w-100" mat-flat-button color="primary">Log In</button>
+  <div class="mt-2 pl-0 pr-2">
+    <button class="w-100" (click)="login()" mat-flat-button color="primary" [disabled]="isLoggingIn">
+      <span *ngIf="!isLoggingIn">Log In</span>
+      <span *ngIf="isLoggingIn">Loggin In</span>
+    </button>
   </div>
 </div>
