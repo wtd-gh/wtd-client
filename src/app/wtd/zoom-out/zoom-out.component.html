@@ -1,31 +1,27 @@
-<app-navbar>
-  <div class="p-3">
-    <h1>Here are the tasks you can embark your skills upon, {{name}}:-</h1>
-    <mat-form-field class="m-2" style="width: 450px; max-width: 90%">
-      <input type="tel" matInput placeholder="Search">
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
-    <div class="mr-md-5">
-      <div [fxLayout]="'row wrap'" class="tasks-wrapper mr-md-4">
-        <div class="p-2">
-          <app-todo></app-todo>
-        </div>
-        <div class="p-2">
-          <app-todo></app-todo>
-        </div>
-        <div class="p-2">
-          <app-todo></app-todo>
-        </div>
-        <div class="p-2">
-          <app-todo></app-todo>
-        </div>
-        <div class="p-2">
-          <app-todo></app-todo>
-        </div>
-        <div class="p-2">
-          <app-todo></app-todo>
-        </div>
+<div class="text-center p-3 mh-nav100">
+  <h2 class="color-primaryd">Here are the tasks you can embark your skills upon, {{name}}:-</h2>
+  <div *ngIf="loading" class="load-cont">
+    <app-loader></app-loader>
+  </div>
+  <div [ngClass]="{'v-hidden': loading}">
+    <div class="buttons-container">
+      <button mat-fab (click)="addTask()"><i class="material-icons">&#xE147;</i></button>
+      <button mat-fab (click)="remove()"><i class="material-icons">&#xE872;</i></button>
+    </div>
+
+    <div class="mx-md-5 px-md-5">
+      <div class="temp-task-wrapper" #tempTaskEl>
+        <ng-template #tempTemplate>
+          <div class="ztask">
+            <div class="ztask-content">
+              <app-todo></app-todo>
+            </div>
+          </div>
+        </ng-template>
+        <ng-container #tempVC></ng-container>
+      </div>
+      <div class="t-grid" #tasksGridEl>
       </div>
     </div>
   </div>
-</app-navbar>
+</div>

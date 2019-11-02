@@ -1,35 +1,48 @@
-<div class="task-wrapper">
-    <div class="task mat-elevation-z2">
-      <div [fxLayout]="'row'">
-        <div [fxLayout]="'column'" [fxFlex]="10">
-          <div class="num bg-darker">1</div>
-          <div [fxFlex]="'1 1 auto'" class="icon-bar py-2" [fxLayout]="'column'">
-            <mat-icon [inline]="true" [fxFlexAlign]="'center'">loop</mat-icon>
-            <mat-icon [inline]="true" [fxFlexAlign]="'center'">create</mat-icon>
-            <div class="spacer"></div>
-            <mat-icon [inline]="true" [fxFlexAlign]="'center'">delete</mat-icon>
-          </div>
+<div class="task-wrapper font-s">
+  <div *ngIf="active" class="task-bg">
+    <div class="task-rank">15</div>
+  </div>
+  <div (mouseenter)="active = true" (mouseleave)="active = false" (dblclick)="cl()" class="task">
+    <div class="task-inner" [fxLayout]="'column'">
+      <div class="t-title">
+        {{ task.tTitle }}
+      </div>
+      <div class="t-desc">
+        {{ task.tDesc }}
+      </div>
+      <div [fxLayout]="'column'" [ngClass]="{ 'o1': active, 'o0': !active }">
+        <div [fxFlex]="'1 1 auto'" [fxLayout]="'row'" class="t-info font-9 pt-2">
+          <p class="m-0"><b>15 hours</b> more to go.</p>
+          <div class="spacer"></div>
+          <p class="m-0"><b>1 hour</b> per day</p>
         </div>
-        <div [fxFlex]="90" class="p-2">
-          <div class="title">My first task</div>
-          <div class="desc my-2">a a f fm bom xm x k dm mk m, a a f fm bom xm x k dm mk m, a a f fm bom xm x k
-            dm mk
-            m, a a f fm bom xm x k dm mk m, a a f fm bom xm x k dm mk m, a a f fm bom xm x k dm mk m, a a f fm
-            bom
-            xm x k dm mk m, a a f fm bom xm x k dm mk m, a a f fm bom xm x k dm mk m, a a f fm bom xm x k dm mk
-            m,
-          </div>
-          <div class="dline" [fxLayout]="'row'">
-            <mat-icon [inline]="true">date_range</mat-icon> 12th June 1998
-            <span class="spacer"></span>
-            <mat-icon [inline]="true">hourglass_full</mat-icon> 58 Hours
-          </div>
-          <div class="dline" [fxLayout]="'row'">
-            <mat-icon [inline]="true">timeline</mat-icon> 4 Hours
-            <span class="spacer"></span>
-            <mat-icon [inline]="true">flag</mat-icon> 1 hour
+        <div class="t-opts">
+          <div [fxFlex]="'1 1 auto'" class="font-9 icon-bar pb-2" [fxLayout]="'row'">
+            <p class="m-0" matTooltip="Deadline">
+              <b>
+                <mat-icon [inline]="true" [fxFlexAlign]="'center'">date_range</mat-icon>24th June 2019
+              </b>
+            </p>
+            <div class="spacer"></div>
+            <mat-icon [inline]="true" class="h-pointer" [fxFlexAlign]="'center'" matTooltip="Edit">create</mat-icon>
+            <mat-icon [inline]="true" class="h-pointer" [fxFlexAlign]="'center'" matTooltip="Turn off repeat">loop</mat-icon>
+            <mat-icon [inline]="true" class="h-pointer" [fxFlexAlign]="'center'" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+            <mat-menu [classList]="'task-menu'" #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>delete</mat-icon>
+                <span class="font-9">Delete</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>repeat</mat-icon>
+                <span class="font-9">Turn off repeat</span>
+              </button>
+            </mat-menu>
           </div>
         </div>
       </div>
     </div>
+    <div [ngClass]="{ 'o1': active, 'o0': !active }" class="t-progress">
+      <div class="tp-width"></div>
+    </div>
   </div>
+</div>

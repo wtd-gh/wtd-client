@@ -1,75 +1,130 @@
 <div class="navbar-wrapper">
-  <mat-toolbar class="nav-bar px-sm-4 px-1 bg-primary color-w">
-    <img class="nav-logo" src="assets/logo.png" alt="">
-    <h1 class="nav-title">What to Do?!</h1>
-
-    <span class="spacer"></span>
-
-    <button mat-button *ngIf="!mobileQuery.matches" (click)="logout()">
-      <mat-icon [inline]="true">exit_to_app</mat-icon>
-      Log out
-    </button>
-
+  <mat-toolbar class="nav-bar px-sm-5 px-1 bg-wl color-dark">
     <button mat-icon-button *ngIf="mobileQuery.matches" (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-  </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container mh-nav100">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [position]="mobileQuery.matches ? 'end' : 'start'"
-      [opened]="mobileQuery.matches ? false : true" fixedInViewport=true fixedTopGap="50" class="sidenav">
-      <div class="h-100" [fxLayout]="'column'">
-      <h3 class="py-3 m-0 text-center bg-primary color-w">Welcome {{uName}} </h3>
-      <mat-nav-list>
-        <a mat-list-item [routerLink]="['/wtd']" class=" snav-l-i-active">
-          <div class="snav-l-i">
-            <mat-icon [inline]="true">help</mat-icon>
-            What to Do?!
-          </div>
-        </a>
+    <img class="nav-logo" src="assets/logo-dark.png" alt="">
+    <h1 class="nav-title mr-5">What to Do?!</h1>
 
-        <a mat-list-item [routerLink]="['/wtd/add_to_do']">
-          <div class="snav-l-i">
-            <mat-icon [inline]="true">add_circle</mat-icon>
-            Add to Do
-          </div>
-        </a>
-
-        <a mat-list-item [routerLink]="['/wtd/did_it']">
-          <div class="snav-l-i">
-            <mat-icon [inline]="true">check_circle</mat-icon>
-            Did it
-          </div>
-        </a>
-
-        <a mat-list-item [routerLink]="['/wtd/zoom_out']">
-          <div class="snav-l-i">
-            <mat-icon [inline]="true">zoom_out</mat-icon>
-            Zoom Out
-          </div>
-        </a>
-
-        <mat-divider></mat-divider>
-
-        <a mat-list-item *ngIf="mobileQuery.matches" (click)="logout()">
-          <div class="snav-l-i">
-            <mat-icon [inline]="true">exit_to_app</mat-icon>
-            Log out
-          </div>
-        </a>
-      </mat-nav-list>
-      <div class="spacer"></div>
-      <div class="text-center snav-footer">
-        <div><a href="s" class="mx-2">Terms </a><a href="s" class="mx-2"> Privacy</a></div>
-        <p class="mt-1">© 2019 WtD</p>
+    <div *ngIf="!mobileQuery.matches" class="search-container ml-5">
+      <div class="search px-2" [fxLayout]="'row'" #search>
+        <mat-icon class="mr-2" [inline]="true">search</mat-icon>
+        <input placeholder="Search" type="text" class="search-input font-s fw-500" [(ngModel)]="searchText"
+          (focus)="search.classList.add('si-active')" (focusout)="search.classList.remove('si-active')" #searchinput>
+        <mat-icon class="h-pointer" *ngIf="searchText" (click)="searchText = ''" [inline]="true">clear</mat-icon>
       </div>
     </div>
+
+    <span class="spacer"></span>
+
+    <div [ngClass]="{'right0': sActive || (searchText != '') }" *ngIf="mobileQuery.matches" class="search-container-m">
+      <div [ngClass]="{'si-active': sActive }" class="search-m px-2" [fxLayout]="'row'" #search_m>
+        <mat-icon class="mr-2" [inline]="true">search</mat-icon>
+        <input placeholder="Search" type="text" class="search-input-m font-s fw-500" [(ngModel)]="searchText"
+          (focus)="sActive = true;" (focusout)="sActive = false;" #searchinput_m>
+        <mat-icon class="h-pointer" *ngIf="searchText" (click)="searchText = ''" [inline]="true">clear</mat-icon>
+      </div>
+    </div>
+
+    <button routerLink="/home/profile" mat-icon-button *ngIf="!mobileQuery.matches">
+      <mat-icon>perm_identity</mat-icon>
+    </button>
+
+    <button routerLink="/home/settings" mat-icon-button *ngIf="!mobileQuery.matches">
+      <div class="material-icon"></div>
+    </button>
+
+    <button mat-button *ngIf="!mobileQuery.matches" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span class="font-s font-12">Log out</span>
+    </button>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container mh-nav100 bg-gl">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [position]="'start'"
+      [opened]="mobileQuery.matches ? false : true" fixedInViewport=true fixedTopGap="50" class="sidenav bg-gl">
+      <div class="h-100" [fxLayout]="'column'">
+        <h3 class="py-3 m-0 text-center color-primaryxxd fw-600">Welcome {{uName}} </h3>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/home/wtd" routerLinkActive="snav-li-active" class="snav-li">
+            <div class="snav-li-wr">
+              <span class="snav-icon">
+                <mat-icon [inline]="true">help_outline</mat-icon>
+              </span>
+              What to Do?!
+            </div>
+          </a>
+
+          <a mat-list-item routerLink="/home/zoom-out" routerLinkActive="snav-li-active" class="snav-li">
+            <div class="snav-li-wr">
+              <mat-icon [inline]="true">zoom_out</mat-icon>
+              Zoom Out
+            </div>
+          </a>
+
+          <br>
+
+          <mat-divider></mat-divider>
+
+          <a mat-list-item routerLink="/home/labels" routerLinkActive="snav-li-active" class="snav-li">
+            <div class="snav-li-wr">
+              <mat-icon [inline]="true">label_outline</mat-icon>
+              Labels
+            </div>
+          </a>
+
+          <a mat-list-item routerLink="/home/finished" routerLinkActive="snav-li-active" class="snav-li">
+            <div class="snav-li-wr">
+              <mat-icon [inline]="true">check</mat-icon>
+              Finished
+            </div>
+          </a>
+
+          <br>
+
+          <mat-divider *ngIf="mobileQuery.matches"></mat-divider>
+
+          <a mat-list-item routerLink="/home/profile" *ngIf="mobileQuery.matches" routerLinkActive="snav-li-active" class="snav-li">
+            <div class="snav-li-wr">
+              <mat-icon [inline]="true">perm_identity</mat-icon>
+              Profile
+            </div>
+          </a>
+
+          <a mat-list-item routerLink="/home/settings" *ngIf="mobileQuery.matches" routerLinkActive="snav-li-active" class="snav-li">
+            <div class="snav-li-wr">
+              <div class="material-icon ml-0 mr-3"></div>
+              Settings
+            </div>
+          </a>
+
+          <a mat-list-item *ngIf="mobileQuery.matches" (click)="logout()" class="snav-li">
+            <div class="snav-li-wr">
+              <mat-icon [inline]="true">exit_to_app</mat-icon>
+              Log out
+            </div>
+          </a>
+        </mat-nav-list>
+        <div class="spacer"></div>
+        <div class="pl-4 snav-footer">
+          <div><a href="s" class="mr-2">Terms </a><a href="s" class="ml-2"> Privacy</a></div>
+          <p class="mt-1">© 2019 WtD</p>
+        </div>
+      </div>
     </mat-sidenav>
 
     <mat-sidenav-content class="mh-nav100">
-      <div class="mh-nav100">
-        <ng-content></ng-content>
+      <div style="overflow: auto;" class="h-nav100">
+        <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+  <div class="atd-wrapper">
+    <button matTooltip="Add new task!" mat-fab color="primary" (click)="openAddDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>

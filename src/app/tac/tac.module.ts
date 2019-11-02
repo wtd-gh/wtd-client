@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export default class TacModule {}
+export class TacModule {}

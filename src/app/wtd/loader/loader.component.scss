@@ -1,0 +1,49 @@
+@import '../../vars.scss';
+
+.load-wrapper {
+  margin: auto;
+  width: 150px;
+}
+
+.loader {
+  width: 150px;
+  margin: 0;
+  padding: 0;
+}
+
+.loader-text {
+  font-size: 1.2rem;
+  position: relative;
+  top: -20px;
+  font-family: $font-s;
+  font-weight: 500;
+}
+
+.circle {
+  fill: $color-gd;
+  stroke: #f05125;
+  stroke-width: 0;
+}
+
+.min-hand {
+  fill: #666;
+}
+
+.hr-hand {
+  fill: #888;
+}
+
+
+// .circle {
+//   fill: $color-pl;
+//   stroke: #f05125;
+//   stroke-width: 0;
+// }
+
+// .min-hand {
+//   fill: $color-pl;
+// }
+
+// .hr-hand {
+//   fill: $color-pxl;
+// }

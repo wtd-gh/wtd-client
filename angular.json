@@ -28,7 +28,10 @@
               "src/b4util.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/scripts/anime.min.js",
+              "src/assets/scripts/particles.js"
+            ]
           },
           "configurations": {
             "production": {

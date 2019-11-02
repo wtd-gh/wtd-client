@@ -10,11 +10,11 @@ const routes: Routes = [
   },
   {
     path: 'tp',
-    loadChildren: './tac/tac.module'
+    loadChildren: './tac/tac.module#TacModule'
   },
   {
-    path: 'wtd',
-    loadChildren: './wtd/wtd.module'
+    path: 'home',
+    loadChildren: './wtd/wtd.module#WtdModule'
   }
 ];
 

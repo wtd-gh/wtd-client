@@ -1,6 +1,8 @@
 import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthService } from '../../services/auth.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AddTodoComponent } from '../add-todo/add-todo.component';
 
 
 @Component({
@@ -10,16 +12,19 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent implements OnDestroy {
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private auth: AuthService) {
+  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private auth: AuthService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   uName = 'Shivam';
+  sActive = false;
+  searchText = '';
 
   sideNav = false;
   mobileQuery: MediaQueryList;
+  addDialogRef: MatDialogRef<AddTodoComponent, any>;
 
   private _mobileQueryListener: () => void;
 
@@ -35,4 +40,13 @@ export class NavbarComponent implements OnDestroy {
     await this.auth.isLogin();
     console.log('logout');
   }
+
+  openAddDialog() {
+    this.addDialogRef = this.dialog.open(AddTodoComponent, { id: 'add-todo-dialog', disableClose: true});
+  }
+
+  closeAddDialog() {
+    this.addDialogRef.close();
+  }
+
 }

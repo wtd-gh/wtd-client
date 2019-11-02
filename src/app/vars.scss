@@ -23,17 +23,25 @@ $color-dark: #424242;
 $color-darker: #212121;
 
 $color-g: #BDBDBD;
-$color-gl: #E0E0E0;
+// $color-gl: #F5F5F5;
+$color-gl: #fcfcfc;
 $color-gd: #BDBDBD;
 
 $color-w: #eee;
 $color-wl: #fff;
 $color-wd: #ddd;
 
+$color-b: black;
+
 $navbar-ht: 50px;
 
 
+// fonts
+$font-p: 'Source Sans Pro', sans-serif;
+$font-s: 'Gordita', sans-serif;
 
+.font-p { font-family: $font-p };
+.font-s { font-family: $font-s };
 
 // Color Palatte
 .bg-primary { background-color: $color-p; }
@@ -89,3 +97,4 @@ $navbar-ht: 50px;
 .color-w { color: $color-w; }
 .color-wl { color: $color-wl; }
 .color-wd { color: $color-wd; }
+.color-b { color: $color-b; }

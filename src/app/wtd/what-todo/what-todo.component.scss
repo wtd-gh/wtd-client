@@ -1,0 +1,31 @@
+.wtd-wrapper {
+  // background-image: url('../../../assets/2.png');
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: 30%;
+}
+
+.bg-wtd {
+  background-image: url('../../../assets/wtd.png');
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 30%;
+}
+
+.wtd-bg {
+  width: calc(95% - 3rem);
+  height: 100%;
+  background-image: url('../../../assets/wtd2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10%;
+  flex: 1 1 auto;
+  position: absolute;
+  opacity: 0.6;
+  top: 30px;
+}
+
+.wtd-bg img {
+  width: 10%;
+  opacity: 0.3;
+}

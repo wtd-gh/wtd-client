@@ -1,9 +1,37 @@
-.add-todo{
+.add-todo {
   max-width: 500px;
+  position: relative;
 }
 
 .repeat-task {
   position: relative;
   top: -7px;
   left: 5px;
+}
+
+.step1,
+.step2,
+.step3 {
+  width: 450px;
+  max-width: 85vw;
+}
+
+.add-close-btn {
+  right: -11px;
+  top: -11px;
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  line-height: 1px;
+  font-size: 18px;
+  background: #fff;
+  color: #333;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  transition: transform 200ms ease-in-out;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0px;
 }

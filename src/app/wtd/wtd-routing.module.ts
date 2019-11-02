@@ -2,26 +2,25 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ZoomOutComponent } from './zoom-out/zoom-out.component';
 import { WhatTodoComponent } from './what-todo/what-todo.component';
-import { AddTodoComponent } from './add-todo/add-todo.component';
-import { DidItComponent } from './did-it/did-it.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LabelsComponent } from './labels/labels.component';
+import { FinishedComponent } from './finished/finished.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: WhatTodoComponent
-  },
-  {
-    path: 'zoom_out',
-    component: ZoomOutComponent
-  },
-  {
-    path: 'add_to_do',
-    component: AddTodoComponent
-  },
-  {
-    path: 'did_it',
-    component: DidItComponent
+    component: NavbarComponent,
+    children: [
+      { path: 'wtd', component: WhatTodoComponent },
+      { path: 'zoom-out', component: ZoomOutComponent },
+      { path: 'labels', component: LabelsComponent },
+      { path: 'finished', component: FinishedComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'settings', component: SettingsComponent }
+    ]
   }
 ];
 

@@ -1,19 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,500,600,700&display=swap');
+@import './assets/woff2-wtd.css';
 @import './app/vars.scss';
 
+:root {
+  font-size: 12px;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: $font-p;
+  font-size: 14px;
   width: 100vw;
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $font-s;
+  font-weight: 500;
 }
 
 div {
   box-sizing: border-box !important;
 }
+
 .w-100 {
   width: 100%;
 }
@@ -44,7 +58,11 @@ div {
 }
 
 .mh-nav100 {
-    min-height: calc(100vh - #{$navbar-ht});
+  min-height: calc(100vh - #{$navbar-ht});
+}
+
+.h-nav100 {
+  height: calc(100vh - #{$navbar-ht});
 }
 
 .h-100 {
@@ -64,6 +82,10 @@ hr {
 
 .d-inline-block {
   display: inline-block;
+}
+
+.v-hidden {
+  visibility: hidden;
 }
 
 .h-pointer:hover {
@@ -102,6 +124,14 @@ hr {
   font-size: 40px;
 }
 
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -109,27 +139,6 @@ hr {
 /* -------------------------------------------------------------------------------- */
 /* Single Task */
 /* -------------------------------------------------------------------------------- */
-
-.task {
-  max-width: 350px;
-  border-radius: 2px;
-}
-
-.task .num {
-  font-size: 28px;
-  font-weight: 300;
-  text-align: center;
-  border-radius: 2px;
-}
-
-.task .icon-bar {
-  font-size: 20px;
-}
-
-.task .title {
-  font-size: 20px;
-}
-
 
 
 /* -------------------------------------------------------------------------------- */
@@ -144,4 +153,98 @@ hr {
 
 .main-auth-tab .mat-tab-labels .mat-ink-bar {
   width: 50% !important;
+}
+
+.add-todo .mat-horizontal-stepper-header-container {
+  display: none !important;
+}
+
+.add-todo .mat-horizontal-content-container {
+  padding: 0px !important;
+}
+
+.add-todo .mat-button-toggle-checked {
+  background-color: $color-p !important;
+  color: $color-w !important;
+}
+
+.add-todo .mat-calendar-header {
+  padding: 0 !important;
+}
+
+.add-todo .mat-button-toggle-label-content {
+  line-height: 24px !important;
+}
+
+.add-close-btn .mat-button-wrapper {
+  line-height: 0px !important;
+}
+
+#add-todo-dialog {
+  overflow: unset;
+}
+
+.timepicker-overlay,
+.timepicker-backdrop-overlay {
+  z-index: 2000 !important;
+}
+
+.mat-dialog-container {
+  padding: 0px !important;
+}
+
+ngx-material-timepicker-content {
+  --primary-font-family: #{$font-p} !important;
+  --body-background-color: #fff !important;
+  --button-color: #{$color-p} !important;
+  --dial-active-color: #fff !important;
+  --dial-inactive-color: rgba(255, 255, 255, .5) !important;
+  --dial-background-color: #{$color-p} !important;
+  --dial-editable-active-color: #{$color-p} !important;
+  --dial-editable-background-color: #fff !important;
+  --clock-face-time-active-color: #fff !important;
+  --clock-face-time-inactive-color: #6c6c6c !important;
+  --clock-face-inner-time-inactive-color: #929292 !important;
+  --clock-face-time-disabled-color: #c5c5c5 !important;
+  --clock-face-background-color: #f0f0f0 !important;
+  --clock-hand-color: #{$color-p} !important;
+}
+
+// .mat-form-field-appearance-fill .mat-form-field-flex {
+//   background: $color-wl;
+// }
+
+
+.task-menu .mat-menu-item {
+  line-height: unset !important;
+  height: auto !important;
+  padding: 0 2px !important;
+}
+
+.task-menu .mat-menu-item .mat-icon {
+  margin-right: 0px !important;
+  color: $color-b;
+}
+
+
+
+// Particle effect for deleting tasks
+.particles {
+  position: relative;
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.particles-canvas {
+  position: absolute;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.particles-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  will-change: transform;
 }

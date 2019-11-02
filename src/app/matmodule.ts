@@ -14,12 +14,16 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatBadgeModule } from '@angular/material/badge';
 
 const importsExports = [
   MatButtonModule,
@@ -28,8 +32,10 @@ const importsExports = [
   MatSnackBarModule,
   MatTooltipModule,
   MatIconModule,
+  MatBadgeModule,
   MatSidenavModule,
   MatFormFieldModule,
+  MatMenuModule,
   MatDatepickerModule,
   MatSlideToggleModule,
   MatTabsModule,
@@ -41,7 +47,9 @@ const importsExports = [
   MatProgressBarModule,
   MatDividerModule,
   MatCardModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatStepperModule,
+  NgxMaterialTimepickerModule
 ];
 
 @NgModule({

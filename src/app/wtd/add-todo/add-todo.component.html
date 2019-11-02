@@ -1,42 +1,68 @@
-<app-navbar>
-  <div class="py-3 px-5">
-    <h1>Got another thrilling task {{name}}? Add it and <b>Just do it</b></h1>
-    <div [fxLayout]="'column'" class="add-todo">
-      <mat-form-field appearance="outline">
-        <mat-label>Task Name</mat-label>
-        <input matInput placeholder="Task Name">
-        <!-- <mat-icon matSuffix></mat-icon> -->
+<div style="width: 400px; max-width: 80vw;" class="bg-p add-todo p-3">
+  <button class="add-close-btn" mat-mini-fab (click)="closeDialog()">
+    <mat-icon [inline]="true">close</mat-icon>
+  </button>
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="firstFG">
+      <h2 class="mt-0">Got another thrilling task {{name}}? Add it and <b>just do it!</b></h2>
+      <form [formGroup]="firstFG" [fxLayout]="'column'">
+        <mat-form-field appearance="fill">
+          <mat-label>Task name</mat-label>
+          <input matInput cdkFocusInitial autofocus formControlName="tName" required #tNameI>
+        </mat-form-field>
+        <div>
+          <form [formGroup]="secFG" [fxLayout]="'row'" [fxLayoutGap]="'5px'">
+            <mat-form-field appearance="fill" [fxFlex]="50">
+              <mat-label>Hours for Completion</mat-label>
+              <input type="number" autofocus matInput formControlName="tWorkHrs" min="0" placeholder="Hours" #tWorkHrsI>
+            </mat-form-field>
+            <mat-form-field appearance="fill" [fxFlex]="50">
+              <mat-label>Minimum Time Quanta</mat-label>
+              <input type="number" matInput min="0" value="2" formControlName="tQuanta"
+                placeholder="Time Quanta (Hours)">
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="my-2">
+          <mat-chip (click)="isDesc = !isDesc"><span>
+              <mat-icon [inline]="true">create</mat-icon>Add description
+            </span></mat-chip>
+        </div>
+        <mat-form-field *ngIf="isDesc" appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="3" cdkAutosizeMaxRows="6" placeholder="Description"
+            formControlName="tDesc" cdkFocusInitial></textarea>
+        </mat-form-field>
+        <div>
+          <button mat-stroked-button color="primary" class="float-right" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFG" [fxLayout]="'column'">
+      <h2 class="my-0 text-center">Select Deadline</h2>
+      <div class="addtodo-date text-center">
+        <mat-calendar style="max-width: 400px; padding: 0 10px;" [selected]="selectedDate"
+          (selectedChange)="cd($event)">
+        </mat-calendar>
+      </div>
+
+      <mat-form-field appearance="fill" [fxHide.lt-md]="true" class="w-100">
+        <mat-label>Enter time</mat-label>
+        <input matInput placeholder="Enter time" type="time" required>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Task Description</mat-label>
-        <textarea matInput placeholder="Task Description"></textarea>
+      <mat-form-field [fxHide.gt-sm]="true" class="w-100">
+        <mat-label>Enter time</mat-label>
+        <input matInput placeholder="Enter time" required [ngxTimepicker]="tpicker">
+        <ngx-material-timepicker class="" #tpicker></ngx-material-timepicker>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Hours for Completion</mat-label>
-        <input type="number" matInput placeholder="Hours">
-        <!-- <mat-icon matSuffix></mat-icon> -->
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Minimum Time Quanta</mat-label>
-        <input type="number" matInput placeholder="Time Quanta">
-        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-      </mat-form-field>
-
-      <h3 class="m-0 mb-2">
-        <mat-slide-toggle color="primary" [(ngModel)]="tIsRepeat">Repeat Task</mat-slide-toggle>
+      <h3 class="m-0 mr-2 mb-1">
+        <mat-slide-toggle color="primary" [(ngModel)]="tIsRepeat"><span class="font-12">Repeat Task</span>
+        </mat-slide-toggle>
       </h3>
-
-      <mat-form-field *ngIf="!tIsRepeat" appearance="outline">
-        <input matInput [matDatepicker]="picker" placeholder="Deadline">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-
-      <div *ngIf="tIsRepeat" [fxLayout]="'column'">
-        <p class="mb-1">Select days to repeat</p>
+      <div *ngIf="tIsRepeat" [fxLayout.gt-xs]="'row'">
+        <p class="m-0 mt-1 mr-1">Select days to repeat:</p>
         <mat-button-toggle-group [multiple]="true" color="primary" class="mb-2">
           <mat-button-toggle value="0">S</mat-button-toggle>
           <mat-button-toggle value="1">M</mat-button-toggle>
@@ -46,15 +72,11 @@
           <mat-button-toggle value="5">F</mat-button-toggle>
           <mat-button-toggle value="6">S</mat-button-toggle>
         </mat-button-toggle-group>
-
-        <mat-form-field appearance="outline">
-          <input matInput [matDatepicker]="picker" placeholder="Repeat time">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
       </div>
-      <br>
-      <button mat-raised-button color="primary">Add it!</button>
-    </div>
-  </div>
-</app-navbar>
+      <div>
+        <button class="float-left" mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" class="float-right" mat-button matStepperNext>Add it!</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

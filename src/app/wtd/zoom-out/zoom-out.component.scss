@@ -1,3 +1,92 @@
 .p-1 {
   padding: 0.5rem !important;
 }
+
+.temp-task-wrapper {
+  display: none;
+}
+
+.t-grid {
+  position: relative;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  max-width: 1050px;
+}
+
+.ztask {
+  display: flex !important;
+  position: absolute;
+  padding: 0;
+  width: 25%;
+}
+
+.ztask-content {
+  position: relative;
+  padding: 5px;
+  width: 100%;
+}
+
+.animate-zoomin {
+  animation: zoom-in 0.5s cubic-bezier(.8, -0.6, 0.2, 1.5);
+}
+
+.ztask:last-child .task-content {
+  background-image: none;
+}
+
+.ztask.muuri-task-dragging {
+  z-index: 3;
+}
+
+.ztask.muuri-task-dragging .task-content {
+  background-image: none;
+  cursor: move;
+}
+
+.ztask.muuri-task-dragging .task-content-inner {
+  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, .1);
+}
+
+.ztask.muuri-task-releasing {
+  z-index: 2;
+}
+
+.ztask.muuri-task-hidden {
+  z-index: 0;
+}
+
+.load-cont {
+  margin-top: 20vh;
+}
+
+
+@media screen and (max-width: 720px) {
+  .ztask {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 721px) and (max-width: 1100px) {
+  .ztask {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1101px) and (max-width: 1400px) {
+  .ztask {
+    width: 33%;
+  }
+}
+
+@keyframes zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-todo',
@@ -7,27 +9,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTodoComponent implements OnInit {
   name = 'Shivam';
-
-  tName: string;
-  tDesc: string;
-  tDeadline: Date;
-  tCompHrs: number;
-  tQuanta: number;
-
   tIsRepeat = false;
-  tDayRepeat: number[] = [1, 2, 3, 4, 5];
-  tDayTypes: any[] = [
-    { label: 'S', value: 0 },
-    { label: 'M', value: 1 },
-    { label: 'T', value: 2 },
-    { label: 'W', value: 3 },
-    { label: 'T', value: 4 },
-    { label: 'F', value: 5 },
-    { label: 'S', value: 6 },
-  ];
+  isDesc = false;
+  firstFG: FormGroup;
+  secFG: FormGroup;
+  thirdFG: FormGroup;
+  fourthFG: FormGroup;
+  selectedDate =  new Date();
+  constructor(public addDialogRef: MatDialogRef<AddTodoComponent>, private formBuilder: FormBuilder) {}
 
-  constructor() {
+  ngOnInit() {
+    this.firstFG = this.formBuilder.group({
+      tName: ['', Validators.required],
+      tDesc: ['']
+    });
+    this.secFG   = this.formBuilder.group({
+      tWorkHrs: ['2', [Validators.min(0), Validators.required]],
+      tQuanta: ['', Validators.min(0)]
+    });
+    this.thirdFG   = this.formBuilder.group({
+      tDeadlineDate: ['', [Validators.required]]
+    });
   }
 
-  ngOnInit() {}
+  closeDialog() {
+    this.addDialogRef.close();
+  }
+
+  cd($event) {
+    console.log($event);
+    this.selectedDate = $event;
+  }
+  canFocus($event) {
+    console.log("sdsdsd");
+    console.log($event);
+  }
 }
