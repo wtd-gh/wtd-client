@@ -1,18 +1,21 @@
+@import '../../vars.scss';
+
 .title {
   font-size: 50px;
   margin: 2px;
 }
 
 .nav-bar {
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(245, 245, 245);
   height: 50px;
   width: 100vw;
   position: fixed;
   top: 0px;
   z-index: 2;
   left: 0px;
-  border-bottom: rgb(230, 230, 230, 0.2) 1px solid;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-top: $color-p 3px solid;
+  font-family: $font-s;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
 .nav-below {
@@ -59,9 +62,10 @@
 }
 
 .nav-title {
-  font-size: 25px;
+  font-size: 20px;
   position: relative;
   top: -8px;
   left: 8px;
+  color: $color-dark;
   font-weight: 600;
 }

@@ -5,22 +5,28 @@
   // background-size: 30%;
 }
 
-.bg-wtd {
-  background-image: url('../../../assets/wtd.png');
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-size: 30%;
-}
-
 .wtd-bg {
   width: calc(95% - 3rem);
   height: 100%;
   background-image: url('../../../assets/wtd2.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 10%;
+  background-size: calc(17vh);
   flex: 1 1 auto;
   position: absolute;
+  opacity: 0.6;
+  top: 30px;
+}
+
+.no-bg {
+  width: calc(95% - 3rem);
+  height: 25vh;
+  background-image: url('../../../assets/notask.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20vh;
+  flex: 1 1 auto;
+  position: relative;
   opacity: 0.6;
   top: 30px;
 }

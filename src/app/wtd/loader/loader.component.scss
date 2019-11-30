@@ -6,7 +6,7 @@
 }
 
 .loader {
-  width: 150px;
+  width: 100px;
   margin: 0;
   padding: 0;
 }
@@ -31,6 +31,14 @@
 
 .hr-hand {
   fill: #888;
+}
+
+.sandglass {
+  fill: none;
+  stroke: $color-p;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 

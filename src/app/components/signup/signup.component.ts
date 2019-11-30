@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  @Output() afterSignUp = new EventEmitter<boolean>();
   hidePass = true;
   nameFC = new FormControl('', [Validators.required]);
   uNameFC = new FormControl('', [Validators.required]);
@@ -30,6 +31,7 @@ export class SignupComponent implements OnInit {
     });
     if (res.ok) {
       this.openSnackBar('Success, account created, Please login!', 'Close');
+      this.afterSignUp.emit(true);
       this.isRegistering = false;
       return;
     }

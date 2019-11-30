@@ -1,61 +1,52 @@
-<div class="nav-wrapper">
-  <div class="nav-bar" [fxLayout]="'row'">
-    <div class="left" [fxFlex]="100">
-      <span class="m-0 ml-sm-5"></span>
-      <img class="nav-logo" src="assets/logo.png" alt="">
-      <span class="nav-title">What to Do?!</span>
-    </div>
-    <!-- <div class="right ui-g-6 ui-sm-9">
-      <a href="#whywtd" class="nav-button hidden-sm-down">
-          <span class="text">WhyWtD?</span>
-        </a>
+<div style="max-height: 100vh; min-width: 100vw; overflow: hidden;">
+  <div class="nav-wrapper">
+    <div class="nav-bar" [fxLayout]="'row'" [fxLayoutAlign]="'center center'">
+      <div [fxFlex]="100" class="text-center">
+        <span class="m-0 ml-sm-5"></span>
+        <img class="nav-logo" src="assets/logo.png" alt="">
+        <span class="nav-title">What to Do?!</span>
+      </div>
+      <!-- <div class="right ui-g-6 ui-sm-9">
         <a href="#whywtd" class="nav-button">
           <span class="text">Sign In</span>
         </a>
         <a href="#whywtd" class="nav-button bg-lblue">
-          <span class="text">Create an account</span>
+          <span class="text">SignUp</span>
         </a>
-      <span class="m-0 mr-sm-5"></span>
-    </div> -->
+        <span class="m-0 mr-sm-5"></span>
+      </div> -->
+    </div>
+    <div class="nav-below"></div>
   </div>
-  <div class="nav-below"></div>
-</div>
 
-<div class="mh-v100 bg-grey pt-5">
-  <div [fxLayout]="'row'">
-    <div [fxFlex]="40">
-      <div class="ml-5 float-right">
-        <mat-tab-group class="main-auth-tab" [selectedIndex]="activeI" (selectedIndexChange)="handleTabChange($event)" style="width: 450px;">
-          <mat-tab [label]="'Log in'">
-            <h2>Log in</h2>
-            <app-signin></app-signin>
-            <p class="mb-2">New to WtD? <a (click)="openSignUpTab()" class="h-pointer h-ul primary">Create account
-              now</a></p>
-            <p class="text-right"><a href="reset" class="h-ul">Forgot Password?</a></p>
-            <p class="text-right"><a [routerLink]="['/wtd']" class="h-ul">WtD?</a></p>
-          </mat-tab>
-          <mat-tab [label]="'Create account'">
-            <h2>Create Account</h2>
-            <app-signup></app-signup>
-            <p class="font-12 py-3 px-1">By clicking "Sign Up", you agree to our <a href="tp/terms_of_services">Terms
-                of Services</a> and
-              <a href="tp/privacy_policy">Privacy
-                Policy</a>.</p>
-          </mat-tab>
-        </mat-tab-group>
+  <div class="mh-v100 bg-grey pt-5">
+    <div [fxLayout]="'row'">
+      <div [fxHide.lt-sm]="true" [fxFlex]="40">
+        <div class="ml-5 float-right">
+          <mat-tab-group class="main-auth-tab" [selectedIndex]="activeI" (selectedIndexChange)="handleTabChange($event)"
+            style="width: 450px;">
+            <mat-tab [label]="'Sign In'">
+              <h2>Log in</h2>
+              <app-signin></app-signin>
+              <p class="mb-2">New to WtD? <a (click)="openSignUpTab()" class="h-pointer h-ul color-primary">Create
+                  account
+                  now</a></p>
+            </mat-tab>
+            <mat-tab [label]="'Sign Up'">
+              <h2>Create Account</h2>
+              <app-signup></app-signup>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+      <div [fxFlex]="60" [fxFlex.lt-md]="100" class="text-center">
+        <img src="assets/papers.png" style="width: 350px; max-width: 90vw; margin: auto">
+        <h1 class="title px-2" style="font-size: 3rem">More than just a To Do app!</h1>
+        <h3>Get yourself organised now!</h3>
+        <button [fxHide.gt-xs]="true" routerLink="/signin" color="primary" mat-raised-button class="mr-2">Sign
+          In</button>
+        <button [fxHide.gt-xs]="true" routerLink="/signup" color="primary" mat-raised-button>Sign Up</button>
       </div>
     </div>
-    <div [fxFlex]="60" class="text-center text-md-left px-5">
-      <img src="assets/papers.png" alt="" style="max-height: 350px">
-      <h1 class="title">More than just a To Do app!</h1>
-      <p class="pr-5">Just add your tasks and manage all your work. sdsds afns vdklj dblndf bklsdsds afns vdklj dblndf
-        bklsdsds afns
-        vdklj dblndf bklsdsds afns vdklj dblndf bklsdsds afns vdklj dblndf bklsdsds afns vdklj dblndf bklsdsds afns
-        vdklj dblndf bklsdsds afns vdklj dblndf bklsdsds afns vdklj dblndf bklsdsds afns vdklj dblndf bklsdsds afns
-        vdklj dblndf bklsdsds afns vdklj bkl </p>
-      <h3>Get organised yourself now!</h3>
-    </div>
   </div>
 </div>
-
-<app-footer></app-footer>

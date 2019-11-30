@@ -1,5 +1,8 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ViewContainerRef, TemplateRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ViewContainerRef, TemplateRef, ComponentFactory } from '@angular/core';
 import * as Muuri from 'muuri';
+import { UserService } from 'src/app/services/user.service';
+import { TodoComponent } from '../todo/todo.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 declare var Particles: any;
 
@@ -10,43 +13,27 @@ declare var Particles: any;
 })
 
 export class ZoomOutComponent implements OnInit {
-  @ViewChild('tempTaskEl', { read: ElementRef, static: false }) tempTaskEl: ElementRef;
-  @ViewChild('tasksGridEl', { read: ElementRef, static: false }) tasksGridEl: ElementRef;
-  @ViewChild('tempTemplate', { read: TemplateRef, static: false }) tempTemplate: TemplateRef<any>;
-  @ViewChild('tempVC', { read: ViewContainerRef, static: false }) tempVC: ViewContainerRef;
 
-  name = 'Shivam';
+  name = '';
   loading = true;
   counter = 5;
-  tasksList: any;
-  tasksGrid: any;
+  tasksList: any = [];
 
-  componentRef: any;
   isTempTask = false;
 
-  constructor() { }
+  constructor(private user: UserService, private snackBar: MatSnackBar) { }
 
-
-  ngOnInit() {
-    this.tasksGrid = new Muuri.default('.t-grid', {
-      dragEnabled: false,
-      layoutDuration: 400,
-      layoutEasing: 'ease',
-      layout: {
-        fillGaps: false,
-        horizontal: false,
-        alignRight: false,
-        alignBottom: false,
-        rounding: false
+  async ngOnInit() {
+    this.name = this.user.getName(true);
+    const res = await this.user.getAllTasks();
+    console.log(res);
+    this.tasksList = res.tasks;
+    this.stopLoad();
+    this.user.taskAdded.subscribe(resp => {
+      if (resp && resp.ok) {
+        const i = this.getPosition(resp.task);
+        this.tasksList.splice(i, 0, resp.task);
       }
-    });
-
-
-  }
-
-  ngAfterViewInit() {
-    this.loadInitials().then(ret => {
-      setTimeout(() => {this.tasksGrid.synchronize(); this.stopLoad()}, 0);
     });
   }
 
@@ -54,49 +41,102 @@ export class ZoomOutComponent implements OnInit {
     this.loading = false;
   }
 
-  loadInitials() {
-    return Promise.resolve((() => {
-      for (let i = 0; i < 50; i++) {
-         this.addTask();
+  getWHPD(task) {
+    const now = new Date().getTime();
+    const dl = new Date(task.taskDeadline).getTime();
+    const days = ((dl - now) / 3600000) / 24;
+    return Math.round(task.taskWorkHrs / days * 10) / 10;
+  }
+
+  getPosition(task) {
+    const whpd = this.getWHPD(task);
+    let i = 0;
+    for (; i < this.tasksList.length; i++) {
+      if (whpd > this.getWHPD(this.tasksList[i])) {
+        return i;
       }
-      return 'from first'; // return whatever you want not neccessory
-    })());
+    }
+    return i;
   }
 
-  addTask() {
-    const view = this.tempTemplate.createEmbeddedView(null);
-    this.tempVC.insert(view, 0);
-    setTimeout(() => { this.add(); }, 0);
+  compareTasks(t1: any, t2: any) {
+    const t1WHrPD = this.getWHPD(t1);
+    const t2WHrPD = this.getWHPD(t2);
+
+    if (t1WHrPD > t2WHrPD) {
+      return -1;
+    } else {
+      return 1;
+    }
   }
 
-  add() {
-    const tTask = this.tempTaskEl.nativeElement.children[0];
-    // tTask.children[0].classList.add('animate-zoomin');
-    this.tasksGrid.add(tTask, { index: 0 });
-
-    // setTimeout(() => { tTask.children[0].classList.remove('animate-zoomin'); }, 500);
-    // this.tasksGrid.synchronize();
-    // this.tasksGrid.refreshItems();
+  async getKeyCode(kc: number, index: number) {
+    if (kc === 2) {
+      await this.decQuanta(index);
+    } else if (kc === 3) {
+      await this.deleteTask(index);
+      this.openSnackBar('Task deleted!', 'Done');
+    }
   }
+
+  async decQuanta(index: number) {
+    const tId = this.tasksList[index]._id;
+    const res = await this.user.decWork(tId, this.tasksList[index].taskQuanta);
+    this.tasksList[index].taskWorkHrs -= this.tasksList[index].taskQuanta;
+    console.log(this.tasksList);
+    if (this.tasksList[index].taskWorkHrs <= 0) {
+      await this.deleteTask(index);
+      this.openSnackBar('BRAVO!! One less task to go!', ':)', 2500);
+    } else {
+      this.openSnackBar('Going great! Keep up the momentum.', 'On it!', 2500);
+    }
+    setTimeout(() => {
+      this.tasksList.sort((t1: any, t2: any) => {
+        const t1WHrPD = this.getWHPD(t1);
+        const t2WHrPD = this.getWHPD(t2);
+        if (t1WHrPD > t2WHrPD) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+    }, 2000);
+    return true;
+  }
+
+  async deleteTask(index: number) {
+    const tId = this.tasksList[index]._id;
+    const res = await this.user.deleteTask(tId);
+    this.tasksList.splice(index, 1);
+    return true;
+  }
+
 
   remove() {
-    const index = 2;
-    const taskEL = this.tasksGridEl.nativeElement.children[index];
-    if (!taskEL) { return; }
-    const particlesOpts = {
-      type: 'rectangle',
-      style: 'stroke',
-      size: 15,
-      color: '#ddd',
-      duration: 300,
-      easing: [0.2, 1, 0.7, 1],
-      oscillationCoefficient: 5,
-      particlesAmountCoefficient: 2,
-      direction: 'right'
-    };
-    const particles = new Particles(taskEL.children[0], particlesOpts);
-    particles.disintegrate();
-    setTimeout(() => { this.tasksGrid.remove(index, { removeElements: true }); }, 300);
+    // const index = 2;
+    // const taskEL = this.tasksGridEl.nativeElement.children[index];
+    // if (!taskEL) { return; }
+    // const particlesOpts = {
+    //   type: 'rectangle',
+    //   style: 'stroke',
+    //   size: 15,
+    //   color: '#ddd',
+    //   duration: 300,
+    //   easing: [0.2, 1, 0.7, 1],
+    //   oscillationCoefficient: 5,
+    //   particlesAmountCoefficient: 2,
+    //   direction: 'right'
+    // };
+    // const particles = new Particles(taskEL.children[0], particlesOpts);
+    // particles.disintegrate();
+    // setTimeout(() => { this.tasksGrid.remove(index, { removeElements: true }); }, 300);
+  }
+
+
+  openSnackBar(message: string, action: string, time = 1500) {
+    this.snackBar.open(message, action, {
+      duration: time,
+    });
   }
 
 }

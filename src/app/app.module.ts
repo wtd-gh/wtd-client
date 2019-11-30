@@ -14,8 +14,9 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
-import { ForgotPassComponent } from './components/forgot-pass/forgot-pass.component';
 import { AuthInterceptor } from './helpers/auth-interceptor';
+import { LoginComponent } from './components/login/login.component';
+import { CreateacComponent } from './components/createac/createac.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthInterceptor } from './helpers/auth-interceptor';
     FooterComponent,
     SignupComponent,
     SigninComponent,
-    ForgotPassComponent
+    LoginComponent,
+    CreateacComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { AuthInterceptor } from './helpers/auth-interceptor';
     MatModule,
     HttpClientModule
   ],
+  entryComponents: [SigninComponent, SignupComponent],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })

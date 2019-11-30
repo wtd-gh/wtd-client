@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,6 +10,8 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+
+  @Output() afterLogin = new EventEmitter<boolean>();
 
   uNameFC = new FormControl('', [Validators.required]);
   passFC = new FormControl('', [Validators.required]);
@@ -28,7 +30,8 @@ export class SigninComponent implements OnInit {
     this.isLoggingIn = true;
     const res = await this.auth.login({ uId: this.uNameFC.value, pass: this.passFC.value });
     if (res.ok) {
-      await this.router.navigate(['/', 'wtd']);
+      await this.router.navigate(['/', 'home', 'wtd']);
+      this.afterLogin.emit(true);
       this.isLoggingIn = false;
       return;
     }

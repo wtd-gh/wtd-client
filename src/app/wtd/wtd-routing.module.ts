@@ -3,10 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { ZoomOutComponent } from './zoom-out/zoom-out.component';
 import { WhatTodoComponent } from './what-todo/what-todo.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LabelsComponent } from './labels/labels.component';
-import { FinishedComponent } from './finished/finished.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
@@ -15,11 +11,7 @@ const routes: Routes = [
     component: NavbarComponent,
     children: [
       { path: 'wtd', component: WhatTodoComponent },
-      { path: 'zoom-out', component: ZoomOutComponent },
-      { path: 'labels', component: LabelsComponent },
-      { path: 'finished', component: FinishedComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'settings', component: SettingsComponent }
+      { path: 'zoom-out', component: ZoomOutComponent }
     ]
   }
 ];

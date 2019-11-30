@@ -7,33 +7,26 @@
     <img class="nav-logo" src="assets/logo-dark.png" alt="">
     <h1 class="nav-title mr-5">What to Do?!</h1>
 
-    <div *ngIf="!mobileQuery.matches" class="search-container ml-5">
+    <!-- <div *ngIf="!mobileQuery.matches" class="search-container ml-5">
       <div class="search px-2" [fxLayout]="'row'" #search>
         <mat-icon class="mr-2" [inline]="true">search</mat-icon>
         <input placeholder="Search" type="text" class="search-input font-s fw-500" [(ngModel)]="searchText"
           (focus)="search.classList.add('si-active')" (focusout)="search.classList.remove('si-active')" #searchinput>
         <mat-icon class="h-pointer" *ngIf="searchText" (click)="searchText = ''" [inline]="true">clear</mat-icon>
       </div>
-    </div>
+    </div> -->
 
     <span class="spacer"></span>
 
-    <div [ngClass]="{'right0': sActive || (searchText != '') }" *ngIf="mobileQuery.matches" class="search-container-m">
+    <!-- <div [ngClass]="{'right0': sActive || (searchText != '') }" *ngIf="mobileQuery.matches" class="search-container-m">
       <div [ngClass]="{'si-active': sActive }" class="search-m px-2" [fxLayout]="'row'" #search_m>
         <mat-icon class="mr-2" [inline]="true">search</mat-icon>
         <input placeholder="Search" type="text" class="search-input-m font-s fw-500" [(ngModel)]="searchText"
           (focus)="sActive = true;" (focusout)="sActive = false;" #searchinput_m>
         <mat-icon class="h-pointer" *ngIf="searchText" (click)="searchText = ''" [inline]="true">clear</mat-icon>
       </div>
-    </div>
+    </div> -->
 
-    <button routerLink="/home/profile" mat-icon-button *ngIf="!mobileQuery.matches">
-      <mat-icon>perm_identity</mat-icon>
-    </button>
-
-    <button routerLink="/home/settings" mat-icon-button *ngIf="!mobileQuery.matches">
-      <div class="material-icon"></div>
-    </button>
 
     <button mat-button *ngIf="!mobileQuery.matches" (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
@@ -67,39 +60,7 @@
           <br>
 
           <mat-divider></mat-divider>
-
-          <a mat-list-item routerLink="/home/labels" routerLinkActive="snav-li-active" class="snav-li">
-            <div class="snav-li-wr">
-              <mat-icon [inline]="true">label_outline</mat-icon>
-              Labels
-            </div>
-          </a>
-
-          <a mat-list-item routerLink="/home/finished" routerLinkActive="snav-li-active" class="snav-li">
-            <div class="snav-li-wr">
-              <mat-icon [inline]="true">check</mat-icon>
-              Finished
-            </div>
-          </a>
-
           <br>
-
-          <mat-divider *ngIf="mobileQuery.matches"></mat-divider>
-
-          <a mat-list-item routerLink="/home/profile" *ngIf="mobileQuery.matches" routerLinkActive="snav-li-active" class="snav-li">
-            <div class="snav-li-wr">
-              <mat-icon [inline]="true">perm_identity</mat-icon>
-              Profile
-            </div>
-          </a>
-
-          <a mat-list-item routerLink="/home/settings" *ngIf="mobileQuery.matches" routerLinkActive="snav-li-active" class="snav-li">
-            <div class="snav-li-wr">
-              <div class="material-icon ml-0 mr-3"></div>
-              Settings
-            </div>
-          </a>
-
           <a mat-list-item *ngIf="mobileQuery.matches" (click)="logout()" class="snav-li">
             <div class="snav-li-wr">
               <mat-icon [inline]="true">exit_to_app</mat-icon>
@@ -109,8 +70,7 @@
         </mat-nav-list>
         <div class="spacer"></div>
         <div class="pl-4 snav-footer">
-          <div><a href="s" class="mr-2">Terms </a><a href="s" class="ml-2"> Privacy</a></div>
-          <p class="mt-1">© 2019 WtD</p>
+          <p class="mt-1">© 2019 Baheti</p>
         </div>
       </div>
     </mat-sidenav>

@@ -10,9 +10,10 @@ const EMAIL_AVAIL_URI = 'auth/isEmailAvail';
 
 // User data URIs
 const ADD_TASK_URI = 'user/addtask';
-const ADD_REPTASK_URI = 'user/addrepeattask';
-const ALL_TASKS_URI = '/user/alltasks';
-const DEC_WORK_URI = '/user/decreasework';
+const DEL_TASK_URI = 'user/deletetask';
+const ALL_TASKS_URI = 'user/alltasks';
+const WTD_URI = 'user/whattodo';
+const DEC_WORK_URI = 'user/decreasework';
 
 export {
   S_DOMAIN,
@@ -21,7 +22,8 @@ export {
   AUTH_CHK_URI,
   UNAME_AVAIL_URI,
   EMAIL_AVAIL_URI,
-  ADD_REPTASK_URI,
+  WTD_URI,
+  DEL_TASK_URI,
   ADD_TASK_URI,
   ALL_TASKS_URI,
   DEC_WORK_URI

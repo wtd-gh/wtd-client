@@ -14,11 +14,11 @@
           <form [formGroup]="secFG" [fxLayout]="'row'" [fxLayoutGap]="'5px'">
             <mat-form-field appearance="fill" [fxFlex]="50">
               <mat-label>Hours for Completion</mat-label>
-              <input type="number" autofocus matInput formControlName="tWorkHrs" min="0" placeholder="Hours" #tWorkHrsI>
+              <input type="number" matInput formControlName="tWorkHrs" min="0" placeholder="Hours" #tWorkHrsI>
             </mat-form-field>
             <mat-form-field appearance="fill" [fxFlex]="50">
-              <mat-label>Minimum Time Quanta</mat-label>
-              <input type="number" matInput min="0" value="2" formControlName="tQuanta"
+              <mat-label>Minimum Time Quanta(Hours)</mat-label>
+              <input type="number" matInput min="0" formControlName="tQuanta"
                 placeholder="Time Quanta (Hours)">
             </mat-form-field>
           </form>
@@ -42,40 +42,24 @@
       <h2 class="my-0 text-center">Select Deadline</h2>
       <div class="addtodo-date text-center">
         <mat-calendar style="max-width: 400px; padding: 0 10px;" [selected]="selectedDate"
-          (selectedChange)="cd($event)">
+          (selectedChange)="changeDate($event)">
         </mat-calendar>
       </div>
 
       <mat-form-field appearance="fill" [fxHide.lt-md]="true" class="w-100">
         <mat-label>Enter time</mat-label>
-        <input matInput placeholder="Enter time" type="time" required>
+        <input matInput placeholder="Enter time" type="time" required [(ngModel)]="tDeadTime">
       </mat-form-field>
 
       <mat-form-field [fxHide.gt-sm]="true" class="w-100">
         <mat-label>Enter time</mat-label>
-        <input matInput placeholder="Enter time" required [ngxTimepicker]="tpicker">
-        <ngx-material-timepicker class="" #tpicker></ngx-material-timepicker>
+        <input value="10:00" matInput placeholder="Enter time" required [ngxTimepicker]="tpicker">
+        <ngx-material-timepicker [format]=24 (timeSet)="changeTime($event)" #tpicker></ngx-material-timepicker>
       </mat-form-field>
 
-      <h3 class="m-0 mr-2 mb-1">
-        <mat-slide-toggle color="primary" [(ngModel)]="tIsRepeat"><span class="font-12">Repeat Task</span>
-        </mat-slide-toggle>
-      </h3>
-      <div *ngIf="tIsRepeat" [fxLayout.gt-xs]="'row'">
-        <p class="m-0 mt-1 mr-1">Select days to repeat:</p>
-        <mat-button-toggle-group [multiple]="true" color="primary" class="mb-2">
-          <mat-button-toggle value="0">S</mat-button-toggle>
-          <mat-button-toggle value="1">M</mat-button-toggle>
-          <mat-button-toggle value="2">T</mat-button-toggle>
-          <mat-button-toggle value="3">W</mat-button-toggle>
-          <mat-button-toggle value="4">T</mat-button-toggle>
-          <mat-button-toggle value="5">F</mat-button-toggle>
-          <mat-button-toggle value="6">S</mat-button-toggle>
-        </mat-button-toggle-group>
-      </div>
       <div>
         <button class="float-left" mat-button matStepperPrevious>Back</button>
-        <button mat-raised-button color="primary" class="float-right" mat-button matStepperNext>Add it!</button>
+        <button mat-raised-button color="primary" class="float-right" mat-button matStepperNext (click)="addTask()">Add it!</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

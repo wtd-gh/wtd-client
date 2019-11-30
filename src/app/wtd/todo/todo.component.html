@@ -1,40 +1,44 @@
 <div class="task-wrapper font-s">
-  <div *ngIf="active" class="task-bg">
+  <!-- <div *ngIf="active" class="task-bg">
     <div class="task-rank">15</div>
-  </div>
-  <div (mouseenter)="active = true" (mouseleave)="active = false" (dblclick)="cl()" class="task">
+  </div> -->
+  <div (mouseenter)="active = true" (mouseleave)="isShow ? active = true : active = false" class="task">
     <div class="task-inner" [fxLayout]="'column'">
       <div class="t-title">
-        {{ task.tTitle }}
+        {{ task.taskName }}
       </div>
       <div class="t-desc">
-        {{ task.tDesc }}
+        {{ task.taskDesc }}
       </div>
       <div [fxLayout]="'column'" [ngClass]="{ 'o1': active, 'o0': !active }">
         <div [fxFlex]="'1 1 auto'" [fxLayout]="'row'" class="t-info font-9 pt-2">
-          <p class="m-0"><b>15 hours</b> more to go.</p>
+          <p class="m-0"><b>{{ task.taskWorkHrs }} hours</b> more to go.</p>
           <div class="spacer"></div>
-          <p class="m-0"><b>1 hour</b> per day</p>
+          <p class="m-0"><b>{{ getWHPD(task) }} hrs</b> per day</p>
         </div>
         <div class="t-opts">
           <div [fxFlex]="'1 1 auto'" class="font-9 icon-bar pb-2" [fxLayout]="'row'">
             <p class="m-0" matTooltip="Deadline">
               <b>
-                <mat-icon [inline]="true" [fxFlexAlign]="'center'">date_range</mat-icon>24th June 2019
+                <mat-icon [inline]="true" [fxFlexAlign]="'center'">date_range</mat-icon>{{ getDL(task.taskDeadline) }}
               </b>
             </p>
             <div class="spacer"></div>
-            <mat-icon [inline]="true" class="h-pointer" [fxFlexAlign]="'center'" matTooltip="Edit">create</mat-icon>
-            <mat-icon [inline]="true" class="h-pointer" [fxFlexAlign]="'center'" matTooltip="Turn off repeat">loop</mat-icon>
-            <mat-icon [inline]="true" class="h-pointer" [fxFlexAlign]="'center'" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+            <p class="m-0">
+              <b>
+                <span  matTooltip="Decrease 1 Quanta" class="h-pointer" (click)="sendKeyCode(2)">
+                  <mat-icon [inline]="true">
+                    remove_circle_outline</mat-icon> {{ task.taskQuanta }} hrs
+                </span>
+              </b>
+            </p>
+
+            <mat-icon *ngIf="!isShow" [inline]="true" class="h-pointer" [fxFlexAlign]="'center'" [matMenuTriggerFor]="menu">more_vert
+            </mat-icon>
             <mat-menu [classList]="'task-menu'" #menu="matMenu">
-              <button mat-menu-item>
+              <button mat-menu-item (click)="sendKeyCode(3)">
                 <mat-icon>delete</mat-icon>
                 <span class="font-9">Delete</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>repeat</mat-icon>
-                <span class="font-9">Turn off repeat</span>
               </button>
             </mat-menu>
           </div>
@@ -42,7 +46,7 @@
       </div>
     </div>
     <div [ngClass]="{ 'o1': active, 'o0': !active }" class="t-progress">
-      <div class="tp-width"></div>
+      <div class="tp-width" [ngStyle]="{'width': getProgress(task)}"></div>
     </div>
   </div>
 </div>

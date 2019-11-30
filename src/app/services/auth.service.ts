@@ -23,6 +23,10 @@ export class AuthService {
     localStorage.setItem(TOKEN_KEY, token);
   }
 
+  setName(name: string) {
+    localStorage.setItem('name', name);
+  }
+
   getToken() {
     const token: string = localStorage.getItem(TOKEN_KEY);
     return token;
@@ -64,6 +68,7 @@ export class AuthService {
       if (res.status === 200) {
         this.setToken(res.headers.get('x-auth'));
       }
+      this.setName(res.body.name);
       return res.body;
     } catch (err) {
       return handleErr(err);

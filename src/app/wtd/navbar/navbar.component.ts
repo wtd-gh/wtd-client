@@ -3,6 +3,8 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddTodoComponent } from '../add-todo/add-todo.component';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -12,13 +14,19 @@ import { AddTodoComponent } from '../add-todo/add-todo.component';
 })
 export class NavbarComponent implements OnDestroy {
 
-  constructor(public dialog: MatDialog, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private auth: AuthService) {
+  constructor(
+    public dialog: MatDialog,
+    public user: UserService,
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher, private auth: AuthService,
+    private router: Router) {
+    this.uName = this.user.getName(true);
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
-  uName = 'Shivam';
+  uName = '';
   sActive = false;
   searchText = '';
 
@@ -37,8 +45,8 @@ export class NavbarComponent implements OnDestroy {
   }
 
   async logout() {
-    await this.auth.isLogin();
-    console.log('logout');
+    this.auth.logout();
+    this.router.navigate(['/']);
   }
 
   openAddDialog() {

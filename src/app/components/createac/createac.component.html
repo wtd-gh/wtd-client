@@ -1,0 +1,13 @@
+<div class="m-0 text-center">
+  <br>
+  <div class="logo-wrapper">
+    <a routerLink="/"><img src="../../../assets/logo.png" style="max-width: 40px;"></a>
+  </div>
+  <br>
+  <br>
+  <div class="login-wrapper text-center">
+    <h3>Create new account</h3>
+    <app-signup (afterSignUp)="redirect()"></app-signup>
+    <p class="mb-2">Not new to WtD? <a routerLink="/signin" class="h-pointer h-ul color-primary">Log in now</a></p>
+  </div>
+</div>

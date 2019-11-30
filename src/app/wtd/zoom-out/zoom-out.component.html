@@ -4,23 +4,11 @@
     <app-loader></app-loader>
   </div>
   <div [ngClass]="{'v-hidden': loading}">
-    <div class="buttons-container">
-      <button mat-fab (click)="addTask()"><i class="material-icons">&#xE147;</i></button>
-      <button mat-fab (click)="remove()"><i class="material-icons">&#xE872;</i></button>
-    </div>
-
     <div class="mx-md-5 px-md-5">
-      <div class="temp-task-wrapper" #tempTaskEl>
-        <ng-template #tempTemplate>
-          <div class="ztask">
-            <div class="ztask-content">
-              <app-todo></app-todo>
-            </div>
-          </div>
-        </ng-template>
-        <ng-container #tempVC></ng-container>
-      </div>
-      <div class="t-grid" #tasksGridEl>
+      <div class="t-grid" [fxLayout]="'row wrap'" [fxLayoutAlign]="'center center'" #tasksGrid>
+        <div *ngFor="let task of tasksList; index as i" [fxFlex.lg]="25" [fxFlex.xs]="100" [fxFlex.sm]="50" [fxFlex.md]="33"  class="p-2">
+          <app-todo [task]="task" (keyPressed)="getKeyCode($event, i)"></app-todo>
+        </div>
       </div>
     </div>
   </div>
