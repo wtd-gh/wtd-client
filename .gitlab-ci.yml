@@ -3,7 +3,7 @@ image: node:latest
 
 before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git nodejs -y )'
-  - apt-get install nodejs -y
+  # - apt-get install nodejs -y
   - which npm
   - which node
   # - eval $(ssh-agent -s)
