@@ -1,11 +1,18 @@
 # 8kcDJeNjwjxBHztdq1tx
 image: node:latest
 
+stages:
+  - build
+  - push
+  - triggerDeploy
+
 before_script:
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git nodejs -y )'
-  # - apt-get install nodejs -y
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git find nodejs -y )'
   - which npm
+  - npm -v
   - which node
+  - node -v
+  - which find
   # - eval $(ssh-agent -s)
   # - echo "$WTD_AWS_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
   # - mkdir -p ~/.ssh
@@ -21,12 +28,23 @@ cache:
     - node_modules/
 
 build:
+  stage: build
   script:
     - ls
     - npm i
     - ./node_modules/@angular/cli/bin/ng build --prod
 
-push:
-  script:
-    - echo 'pushed'
+# ---------------------------------------------------------------------
 
+updateProdBranch:
+  stage: push
+  script:
+    - chmod +x push_client.sh
+    - ./push_client.sh
+
+# ---------------------------------------------------------------------
+
+deployToAWS:
+  stage: triggerDeploy
+  script:
+    - echo "ddddddddd"
