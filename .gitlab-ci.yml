@@ -1,9 +1,6 @@
 # 8kcDJeNjwjxBHztdq1tx
-image: node:latest
-
 stages:
   - build
-  - push
   - triggerDeploy
 
 before_script:
@@ -19,32 +16,27 @@ before_script:
   # - chmod 700 ~/.ssh
   # - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
   # - chmod 644 ~/.ssh/known_hosts
-  # - git config --global user.email "shivamgoyal1506@outlook.com"
-  # - git config --global user.name "Shivam Goyal"
+  - git config --global user.email "shivamgoyal1506@outlook.com"
+  - git config --global user.name "Shivam Goyal"
 
-
-cache:
-  paths:
-    - node_modules/
 
 build:
   stage: build
+  image: node:latest
+  cache:
+    paths:
+      - node_modules/
   script:
     - ls
     - npm i
     - ./node_modules/@angular/cli/bin/ng build --prod
-
-# ---------------------------------------------------------------------
-
-updateProdBranch:
-  stage: push
-  script:
     - chmod +x push_client.sh
     - ./push_client.sh
 
 # ---------------------------------------------------------------------
 
-deployToAWS:
+deploy:
   stage: triggerDeploy
+  image: alpine:latest
   script:
     - echo "ddddddddd"
