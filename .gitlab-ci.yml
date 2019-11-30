@@ -3,21 +3,19 @@ stages:
   - build
   - triggerDeploy
 
-before_script:
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git find nodejs -y )'
-  - which npm
-  - npm -v
-  - which node
-  - node -v
-  - which find
-  # - eval $(ssh-agent -s)
-  # - echo "$WTD_AWS_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-  # - mkdir -p ~/.ssh
-  # - chmod 700 ~/.ssh
-  # - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
-  # - chmod 644 ~/.ssh/known_hosts
-  - git config --global user.email "shivamgoyal1506@outlook.com"
-  - git config --global user.name "Shivam Goyal"
+# before_script:
+#   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git find nodejs -y )'
+#   - which npm
+#   - npm -v
+#   - which node
+#   - node -v
+#   - which find
+#   # - eval $(ssh-agent -s)
+#   # - echo "$WTD_AWS_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+#   # - mkdir -p ~/.ssh
+#   # - chmod 700 ~/.ssh
+#   # - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+#   # - chmod 644 ~/.ssh/known_hosts
 
 
 build:
@@ -27,6 +25,11 @@ build:
     paths:
       - node_modules/
   script:
+    - which npm node find git
+    - npm -v
+    - node -v
+    - git config --global user.email "shivamgoyal1506@outlook.com"
+    - git config --global user.name "Shivam Goyal"
     - ls
     - npm i
     - ./node_modules/@angular/cli/bin/ng build --prod
@@ -39,4 +42,5 @@ deploy:
   stage: triggerDeploy
   image: alpine:latest
   script:
+    - which ssh-agent || apk add openssh-client
     - echo "ddddddddd"
