@@ -33,5 +33,6 @@ triggerDeploy:
     - echo "$WTD_AWS_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - ssh-keyscan compute.aws.com >> ~/.ssh/known_hosts
+    - ssh-keyscan ubuntu@ec2-54-147-120-75.compute-1.amazonaws.com >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
+    - ssh ubuntu@ec2-54-147-120-75.compute-1.amazonaws.com './deploy_client.sh'
