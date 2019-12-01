@@ -1,4 +1,4 @@
-const S_DOMAIN = 'https://wtd.net.in/api/';
+const S_DOMAIN = 'http://54.147.120.75/api/';
 
 // Authentiction URIs
 const AUTH_URI = 'auth/login';

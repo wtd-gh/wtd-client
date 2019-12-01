@@ -1,31 +1,16 @@
-# 8kcDJeNjwjxBHztdq1tx
 stages:
   - build
-  - triggerDeploy
+  - deploy
 
-# before_script:
-#   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git find nodejs -y )'
-#   - which npm
-#   - npm -v
-#   - which node
-#   - node -v
-#   - which find
-#   # - eval $(ssh-agent -s)
-#   # - echo "$WTD_AWS_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-#   # - mkdir -p ~/.ssh
-#   # - chmod 700 ~/.ssh
-#   # - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
-#   # - chmod 644 ~/.ssh/known_hosts
+# ========================================================================
 
-
-build:
+buildProduction:
   stage: build
   image: node:latest
   cache:
     paths:
       - node_modules/
   script:
-    - which npm node find git
     - npm -v
     - node -v
     - git config --global user.email "shivamgoyal1506@outlook.com"
@@ -36,11 +21,17 @@ build:
     - chmod +x push_client.sh
     - ./push_client.sh
 
-# ---------------------------------------------------------------------
+# ========================================================================
 
-deploy:
-  stage: triggerDeploy
+triggerDeploy:
+  stage: deploy
   image: alpine:latest
   script:
     - which ssh-agent || apk add openssh-client
-    - echo "ddddddddd"
+    - which ssh-agent
+    - eval $(ssh-agent -s)
+    - echo "$WTD_AWS_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan compute.aws.com >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
