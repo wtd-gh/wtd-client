@@ -97,6 +97,7 @@ export class UserService {
         { observe: 'response' }
       ).toPromise();
       this.taskAdded.next(res.body);
+      this.taskAdded.next(null);
       return res.body;
     } catch (err) {
       return handleErr(err);

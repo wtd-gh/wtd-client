@@ -7,11 +7,10 @@ import { ZoomOutComponent } from './zoom-out/zoom-out.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { WhatTodoComponent } from './what-todo/what-todo.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MatModule } from '../matmodule';
+import { MatModule } from './matmodule';
 import { TodoComponent } from './todo/todo.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoaderComponent } from './loader/loader.component';
-
 
 
 @NgModule({

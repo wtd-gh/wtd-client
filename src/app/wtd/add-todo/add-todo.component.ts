@@ -19,6 +19,7 @@ export class AddTodoComponent implements OnInit {
   fourthFG: FormGroup;
   selectedDate = new Date();
   tDeadTime = '10:00';
+  isLoading = false;
   constructor(
     private snackBar: MatSnackBar,
     public addDialogRef: MatDialogRef<AddTodoComponent>,
@@ -67,6 +68,7 @@ export class AddTodoComponent implements OnInit {
   }
 
   async addTask() {
+    this.isLoading = true;
     const tDeadline = new Date(this.selectedDate);
     const time = this.parseTime(this.tDeadTime);
     tDeadline.setHours(time.hrs);
@@ -79,11 +81,12 @@ export class AddTodoComponent implements OnInit {
       tDeadline
     };
     const resp = await this.user.addTask(task);
+    this.isLoading = false;
     if (!resp.ok) {
       this.openSnackBar(resp.error, 'close');
     } else {
-      this.openSnackBar('Task added successfully!', 'close');
       this.closeDialog();
+      this.openSnackBar('Task added successfully!', 'close');
     }
   }
 

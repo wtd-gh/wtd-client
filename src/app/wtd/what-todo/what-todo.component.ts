@@ -54,6 +54,7 @@ export class WhatTodoComponent implements OnInit {
   }
 
   async getWTD(mins: number) {
+    this.msg = null;
     this.isLoading = true;
     const resp = await this.user.WTD(mins);
     this.task = resp.task;

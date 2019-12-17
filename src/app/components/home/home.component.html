@@ -21,10 +21,10 @@
 
   <div class="mh-v100 bg-grey pt-5">
     <div [fxLayout]="'row'">
-      <div [fxHide.lt-sm]="true" [fxFlex]="40">
-        <div class="ml-5 float-right">
+      <div [fxHide.lt-md]="true" [fxFlex]="45">
+        <div class="ml-5 float-right" style="width: 90%; max-width: 500px;">
           <mat-tab-group class="main-auth-tab" [selectedIndex]="activeI" (selectedIndexChange)="handleTabChange($event)"
-            style="width: 450px;">
+            style="width: 100%;">
             <mat-tab [label]="'Sign In'">
               <h2>Log in</h2>
               <app-signin></app-signin>
@@ -39,13 +39,13 @@
           </mat-tab-group>
         </div>
       </div>
-      <div [fxFlex]="60" [fxFlex.lt-md]="100" class="text-center">
+      <div [fxFlex]="55" [fxFlex.lt-md]="100" class="text-center">
         <img src="assets/papers.png" style="width: 350px; max-width: 90vw; margin: auto">
         <h1 class="title px-2" style="font-size: 3rem">More than just a To Do app!</h1>
         <h3>Get yourself organised now!</h3>
-        <button [fxHide.gt-xs]="true" routerLink="/signin" color="primary" mat-raised-button class="mr-2">Sign
+        <button [fxHide.gt-sm]="true" routerLink="/signin" color="primary" mat-raised-button class="mr-2">Sign
           In</button>
-        <button [fxHide.gt-xs]="true" routerLink="/signup" color="primary" mat-raised-button>Sign Up</button>
+        <button [fxHide.gt-sm]="true" routerLink="/signup" color="primary" mat-raised-button>Sign Up</button>
       </div>
     </div>
   </div>
