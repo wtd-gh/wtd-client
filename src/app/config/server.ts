@@ -1,4 +1,6 @@
-const S_DOMAIN = 'http://localhost:5200/';
+const S_DOMAIN = 'http://' + window.location.hostname + ':' + '5200' + '/';
+
+const QUOTE_URL = 'https://quotes.rest/qod.json';
 
 // Authentiction URIs
 const AUTH_URI = 'auth/login';
@@ -26,6 +28,7 @@ export {
   DEL_TASK_URI,
   ADD_TASK_URI,
   ALL_TASKS_URI,
-  DEC_WORK_URI
+  DEC_WORK_URI,
+  QUOTE_URL
 };
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkOTBlZWNjOGI2NWU1OGNiYzI5MWQ0NiIsImlhdCI6MTU2OTgzNzg0MH0.-Y0uVVJLjFa-FL23Z8nFnAPBf6Mk1RwdmYojxWo_21M

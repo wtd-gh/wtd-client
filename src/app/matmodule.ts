@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
 
 const importsExports = [
   MatButtonModule,
@@ -15,7 +17,8 @@ const importsExports = [
   MatIconModule,
   MatFormFieldModule,
   MatTabsModule,
-  FlexLayoutModule
+  FlexLayoutModule,
+  NgxMaterialTimepickerModule
 ];
 
 @NgModule({

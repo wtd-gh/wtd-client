@@ -2,14 +2,14 @@
   <div>
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Username/Email</mat-label>
-      <input class="w-100" matInput placeholder="Username/Email" [formControl]="uNameFC">
+      <input (keydown.enter)="login()" class="w-100" matInput placeholder="Username/Email" [formControl]="uNameFC">
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Password</mat-label>
-      <input class="w-100" matInput type="Password" placeholder="Password" [formControl]="passFC">
+      <input (keydown.enter)="login()" class="w-100" matInput type="Password" placeholder="Password" [formControl]="passFC">
       <mat-icon matSuffix>vpn_key</mat-icon>
       <!-- <mat-error *ngIf="isPassError">
         The password you entered is incorrect, Please try again!
@@ -19,7 +19,7 @@
   <div class="mt-2 pl-0 pr-2">
     <button class="w-100" (click)="login()" mat-flat-button color="primary" [disabled]="isLoggingIn">
       <span *ngIf="!isLoggingIn">Log In</span>
-      <span *ngIf="isLoggingIn">Logging In</span>
+      <span *ngIf="isLoggingIn">Logging In...</span>
     </button>
   </div>
 </div>

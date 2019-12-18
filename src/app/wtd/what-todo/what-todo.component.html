@@ -21,11 +21,11 @@
         <div [fxLayout]="'row'" [fxLayoutAlign]="'center start'" [fxLayoutGap]="'5px'">
           <mat-form-field [fxFlex]="50" color="primary" appearance="fill">
             <mat-label>Hours</mat-label>
-            <input matInput type="number" cdkFocusInitial placeholder="Hours" min="10" [(ngModel)]="customHrs">
+            <input matInput type="number" cdkFocusInitial placeholder="Hours" min="0" [(ngModel)]="customHrs">
           </mat-form-field>
           <mat-form-field [fxFlex]="50" color="primary" appearance="fill">
             <mat-label>Minutes</mat-label>
-            <input matInput type="number" placeholder="Minutes" min="10" [(ngModel)]="customMins">
+            <input matInput type="number" placeholder="Minutes" min="0" max="60" [(ngModel)]="customMins">
           </mat-form-field>
         </div>
         <button mat-raised-button color="primary" (click)="getWTD(60*customHrs + customMins)">What to Do?!</button>

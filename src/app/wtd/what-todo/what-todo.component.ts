@@ -14,7 +14,7 @@ export class WhatTodoComponent implements OnInit {
   isCustom = false;
   isLoading = false;
   showTask = false;
-  customHrs = 2;
+  customHrs = 3;
   customMins = 0;
   task: any;
   msg = '';

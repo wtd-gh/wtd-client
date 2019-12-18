@@ -1,5 +1,8 @@
 const S_DOMAIN = 'https://wtd.net.in/api/';
 
+const QUOTE_URL = 'https://quotes.rest/qod.json';
+
+
 // Authentiction URIs
 const AUTH_URI = 'auth/login';
 const AUTH_REG_URI = 'auth/register';
@@ -26,5 +29,6 @@ export {
   DEL_TASK_URI,
   ADD_TASK_URI,
   ALL_TASKS_URI,
-  DEC_WORK_URI
+  DEC_WORK_URI,
+  QUOTE_URL
 };

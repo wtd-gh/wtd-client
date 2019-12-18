@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -14,6 +14,18 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NavbarComponent implements OnDestroy {
 
+  uName = '';
+  quote = null;
+  sActive = false;
+  searchText = '';
+  wText = 'Welcome';
+
+  sideNav = false;
+  mobileQuery: MediaQueryList;
+  addDialogRef: MatDialogRef<AddTodoComponent, any>;
+
+  private _mobileQueryListener: () => void;
+
   constructor(
     public dialog: MatDialog,
     public user: UserService,
@@ -24,17 +36,22 @@ export class NavbarComponent implements OnDestroy {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    const d =  new Date().getHours();
+    if (d >= 6 && d < 12) {
+      this.wText = 'Good Morning';
+    } else if (d >= 12 && d < 18) {
+      this.wText = 'Good Afternoon';
+    } else if (d >= 18 && d < 23) {
+      this.wText = 'Good Evening';
+    } else {
+      this.wText = 'Good Night';
+    }
   }
 
-  uName = '';
-  sActive = false;
-  searchText = '';
-
-  sideNav = false;
-  mobileQuery: MediaQueryList;
-  addDialogRef: MatDialogRef<AddTodoComponent, any>;
-
-  private _mobileQueryListener: () => void;
+  async ngOnInit() {
+    const res = await this.user.getQuote();
+    this.quote = res;
+  }
 
   toggleSideNav() {
     this.sideNav = !this.sideNav;

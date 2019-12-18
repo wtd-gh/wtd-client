@@ -2,7 +2,7 @@
   <div>
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Full Name</mat-label>
-      <input class="w-100" matInput required placeholder="Full Name" [formControl]="nameFC">
+      <input (keydown.enter)="register()" class="w-100" matInput required placeholder="Full Name" [formControl]="nameFC">
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
   </div>
@@ -10,7 +10,7 @@
   <div>
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Username</mat-label>
-      <input class="w-100" matInput required placeholder="Username" [formControl]="uNameFC">
+      <input (keydown.enter)="register()" class="w-100" matInput required placeholder="Username" [formControl]="uNameFC">
       <mat-icon matSuffix>person_add</mat-icon>
     </mat-form-field>
   </div>
@@ -18,14 +18,14 @@
   <div>
     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Email</mat-label>
-      <input class="w-100" matInput placeholder="Email" [formControl]="emailFC">
+      <input (keydown.enter)="register()" class="w-100" matInput placeholder="Email" [formControl]="emailFC">
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field appearance="outline" class="w-100">
         <mat-label>Password</mat-label>
-      <input matInput placeholder="Enter your password"  [formControl]="passFC" [type]="hidePass ? 'password' : 'text'">
+      <input (keydown.enter)="register()" matInput placeholder="Enter your password"  [formControl]="passFC" [type]="hidePass ? 'password' : 'text'">
       <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hidePass">
         <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -35,7 +35,7 @@
   <div class="pl-0 pr-2">
     <button class="w-100" (click)="register()" mat-flat-button color="primary" [disabled]="isRegistering">
         <span *ngIf="!isRegistering">Create account</span>
-        <span *ngIf="isRegistering">Creating account</span>
+        <span *ngIf="isRegistering">Creating account...</span>
     </button>
   </div>
 </div>

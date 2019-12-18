@@ -39,9 +39,10 @@
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [position]="'start'"
       [opened]="mobileQuery.matches ? false : true" fixedInViewport=true fixedTopGap="50" class="sidenav bg-gl">
       <div class="h-100" [fxLayout]="'column'">
-        <h3 class="py-3 m-0 text-center color-primaryxxd fw-600">Welcome {{uName}} </h3>
+        <h3 class="py-3 m-0 text-center color-primaryxxd fw-600">{{wText}} {{uName}} </h3>
         <mat-nav-list>
-          <a mat-list-item routerLink="/home/wtd" routerLinkActive="snav-li-active" class="snav-li">
+          <a mat-list-item routerLink="/home/wtd" (click)="mobileQuery.matches ? snav.toggle() : null"
+            routerLinkActive="snav-li-active" class="snav-li">
             <div class="snav-li-wr">
               <span class="snav-icon">
                 <mat-icon [inline]="true">help_outline</mat-icon>
@@ -50,7 +51,8 @@
             </div>
           </a>
 
-          <a mat-list-item routerLink="/home/zoom-out" routerLinkActive="snav-li-active" class="snav-li">
+          <a mat-list-item routerLink="/home/zoom-out" (click)="mobileQuery.matches ? snav.toggle() : null"
+            routerLinkActive="snav-li-active" class="snav-li">
             <div class="snav-li-wr">
               <mat-icon [inline]="true">zoom_out</mat-icon>
               Zoom Out
@@ -70,6 +72,10 @@
         </mat-nav-list>
         <div class="spacer"></div>
         <div class="pl-4 snav-footer">
+          <div class="quote pr-4" *ngIf="quote">
+            <p class="mb-0"><mat-icon [inline]="true">format_quote</mat-icon> {{quote.q}}</p>
+            <p class="mt-0" style="font-style: italic;">-- {{quote.a}}</p>
+          </div>
           <p class="mt-1">© 2019 WtD</p>
         </div>
       </div>

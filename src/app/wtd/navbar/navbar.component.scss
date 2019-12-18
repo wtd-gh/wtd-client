@@ -111,7 +111,7 @@
 }
 
 .sidenav {
-  width: 220px;
+  width: 250px;
   border: none !important;
 }
 
@@ -181,5 +181,13 @@
   z-index: 2;
 }
 
-
-
+.quote {
+  color: $color-p;
+  font-size: 1rem;
+}
+.f-q {
+  font-size: 1.6rem;
+  font-weight: bold;
+  vertical-align: middle;
+  line-height: 1rem;
+}
