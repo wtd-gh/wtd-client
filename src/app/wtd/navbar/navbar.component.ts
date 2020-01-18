@@ -44,7 +44,7 @@ export class NavbarComponent implements OnDestroy {
     } else if (d >= 18 && d < 23) {
       this.wText = 'Good Evening';
     } else {
-      this.wText = 'Good Night';
+      this.wText = 'Sleep Well';
     }
   }
 

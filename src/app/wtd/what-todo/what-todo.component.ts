@@ -47,7 +47,7 @@ export class WhatTodoComponent implements OnInit {
   }
 
   async deleteTask() {
-    const tId = this.task.taskId;
+    const tId = this.task._id;
     const res = await this.user.deleteTask(tId);
     this.task = null;
     return true;
