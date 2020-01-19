@@ -11,6 +11,7 @@ import { MatModule } from './matmodule';
 import { TodoComponent } from './todo/todo.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoaderComponent } from './loader/loader.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { LoaderComponent } from './loader/loader.component';
     WhatTodoComponent,
     NavbarComponent,
     TodoComponent,
-    LoaderComponent],
+    LoaderComponent,
+    FeedbackComponent],
   imports: [
     CommonModule,
     WtdRoutingModule,

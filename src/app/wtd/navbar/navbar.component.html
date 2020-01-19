@@ -78,7 +78,11 @@
             <p class="mb-0"><mat-icon [inline]="true">format_quote</mat-icon> The best way to do it is to do it!</p>
             <p class="mt-0" style="font-style: italic;">-- Amelia Earhart</p>
           </div>
-          <p class="mt-1">© 2019 WtD</p>
+          <a (click)="mobileQuery.matches ? snav.toggle() : null" class="color-primary" routerLink='/home/feedback'>
+            <mat-icon [inline]="true">feedback</mat-icon>
+            Feedback
+          </a>
+          <p class="mt-3">© 2019 WtD</p>
         </div>
       </div>
     </mat-sidenav>

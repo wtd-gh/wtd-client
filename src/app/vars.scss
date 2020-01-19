@@ -71,7 +71,7 @@ $font-s: 'Gordita', sans-serif;
 .bg-wl { background-color: $color-wl; }
 .bg-wd { background-color: $color-wd; }
 
-.color-primary { color: $color-p; }
+.color-primary { color: $color-p !important;}
 .color-primaryl { color: $color-pl; }
 .color-primaryxl { color: $color-pxl; }
 .color-primaryxxl { color: $color-pxxl; }
