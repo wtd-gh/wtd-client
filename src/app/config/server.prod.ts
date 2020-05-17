@@ -1,4 +1,4 @@
-const S_DOMAIN = 'https://wtd.net.in/api/';
+const S_DOMAIN = 'https://wtdserver.herokuapp.com/';
 
 const QUOTE_URL = 'https://quotes.rest/qod.json';
 
